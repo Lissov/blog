@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 30px;
+  line-height: 1.6;
+  background: #f6f7f8;
+  color: #1f2937;
+}
+header h1 {
+  color: #111827;
+}
+.blog-post-list h1,
+.blog-post-list h2,
+.blog-post-list h3 {
+  color: #111827;
+}
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.blog-post-list article {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.blog-post-list .blog-meta {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+.blog-post-list p {
+  margin: 10px 0 0;
+}
