@@ -19,7 +19,7 @@ body.blog {
   color: #111827;
 }
 .blog a {
-  color: #2563eb;
+  color: #2563eb !important;
   text-decoration: none;
 }
 .blog a:hover {
