@@ -7,7 +7,7 @@
   background: #f6f7f8;
   color: #1f2937;
 }
-.blog article {
+.blog .split-lines {
   white-space: pre-line;
 }
 .blog header h1 {
