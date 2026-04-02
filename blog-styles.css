@@ -1,4 +1,4 @@
-body.blog {
+.blog {
   font-family: Arial, sans-serif;
   max-width: 860px;
   margin: 0 auto;
@@ -17,6 +17,7 @@ body.blog {
 .blog .blog-post-list h2,
 .blog .blog-post-list h3 {
   color: #111827;
+  margin: 0;
 }
 .blog a {
   color: #2563eb !important;
