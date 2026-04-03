@@ -1,14 +1,21 @@
+body.blog {
+  background: #f6f7f8;
+}
 .blog {
   font-family: Arial, sans-serif;
   max-width: 860px;
   margin: 0 auto;
   padding: 30px;
   line-height: 1.6;
-  background: #f6f7f8;
   color: #1f2937;
 }
 .blog .split-lines {
   white-space: pre-line;
+}
+.blog article {
+  background: #f6f7f8;
+  padding: 10px 20px 10px 20px;
+  margin: 0 -20px 0 -20px;
 }
 .blog header h1 {
   color: #111827;
@@ -30,7 +37,6 @@
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 16px;
   margin-bottom: 16px;
 }
 .blog .blog-post-list .blog-meta {
