@@ -1,0 +1,54 @@
+<!-- post-id: atcar -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Deployment of Angular App to Azure with git</title>
+  <link rel="stylesheet" href="../blog-styles.css">
+</head>
+<body class="blog">
+  <article>
+    <h1>Deployment of Angular App to Azure with git</h1>
+    <p class="blog-meta">2018-08-29</p>
+    <div class="split-lines">
+      <i>This article is mostly a note for myself how to do things. It may be quickly outdated.</i>
+      I wrote a simple Pomodoro timer on Angular 6 and was guessing how to host it in Azure. Here are some very simple steps how to do it.
+
+      Given:
+      1. I have a very simple standard Angular 6 application, created via Angular CLI
+      2. It&#39;s stored in the Git repository, hosted in Azure VS Team Projects
+      3. I have an Azure account (you can create a free one)
+      4. I don't see a simple tutorial on Azure portal :)
+      <!--cut text="So how do we do it..."-->
+      Firstly, we need a deployment script. (How I did it - I downloaded sample from already created deployment, but here is a shortcut for you). You need 2 files in the root of the repository:
+      <b>.deployment</b><div style="background-color:#DDDDDD">[config]
+      command = deploy.cmd</div>
+      <b>deploy.cmd</b><div style="background-color:#DDDDDD">xcopy %DEPLOYMENT_SOURCE%\dist\<projectname> %DEPLOYMENT_TARGET% /Y</projectname></div>
+      So it simply copies the content of \dist\<projectname> to the wwwroot folder.
+
+      Next step is to create a &quot;deployment&quot; branch - I called it </projectname><b>production</b>. In that branch go to .gitignore file and remove the line /dist
+
+      Now you need to setup website in Azure:
+      1. Create an AppService (choose the name, all the other settings are ok)
+      2. Go to "Deployment options"
+      3. In "Configure", select Visual Studio Team Project
+      4. Select the name of the repository and a branch
+      5. Click OK
+
+      Now deployment is done.
+
+      For the next deployment you need:
+      1. Merge the latest changes to production branch
+      2. Run the build to compile the website in dist:<div style="background-color:#DDDDDD">ng build --prod
+      </div>
+      3. Push to the repository<div style="background-color:#DDDDDD; width:auto">git add .
+      git commit -m "deployment <id>"
+      git push
+      </div>
+      So simple.
+      Next step will be to automate the build on Azure side. Stay tuned!
+    </div>
+  </article>
+  <p><a href="../index.html" class="blog-back-link">← Back to blog</a></p>
+</body>
+</html>

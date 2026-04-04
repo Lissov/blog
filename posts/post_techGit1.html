@@ -1,0 +1,73 @@
+<!-- post-id: atcar -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Git: split and merge repositories</title>
+  <link rel="stylesheet" href="../blog-styles.css">
+</head>
+<body class="blog">
+  <article>
+    <h1>Git: split and merge repositories</h1>
+    <p class="blog-meta">2017-09-29</p>
+    <div class="split-lines">
+      Our project is historically a combination of 2 projects, each of then had own repository. Let&#39;s call them P1 and P2. And we have a small team that works on a completely separate feature (Reports), they were previously not happy that they have to work in same repository (and have unnecessary dependency) but now their code is scattered in 2 repositories.
+      So the task is, take subfolders from 2 repositories and merge them into one new repository.
+      <!--cut text="How to do it..."-->
+      <ol><li>Create a new empty repository (let&#39;s call it P3)</li>
+      <li>Clone locally:
+      <span style="color:#008080;">git clone [repositoryUrl]/P3</span></li>
+      <li>make a first commit to create a master branch (I created .gitignore, anyway will be needed later):
+      <span style="color:#008080;">cd P3
+      bin &gt; .gitignore
+      git add .
+      git commit -m &quot;Initial commit with .gitignore&quot;
+      git push</span></li>
+      <li>Clone the P1 with a proper branch (I actually did &quot;cd ..&quot; first to get back to root folder)
+      <span style="color:#008080;">git clone -b [branch] [repositoryUrl]/P1
+      cd P1</span></li>
+      <li>Filter the branches you need. Note that path should have slashes &quot;/&quot; (not backslashes), otherwise git says &quot;Nothing to filter&quot;:
+      <span style="color:#008080;">git filter-branch --prune-empty --subdirectory-filter &quot;[directory]&quot; [branch]</span></li>
+      <li>Add remote to the new repository (second command is just to check):
+      <span style="color:#008080;">git remote set-url origin [repositoryUrl]/P3
+      git remote -v</span></li>
+      <li>Create a new branch:
+      <span style="color:#008080;">git checkout -b P1_migrated</span></li>
+      <li>Create a new folder and move files there (otherwise you will have a mess when you merge from 2 repositories). Note to use &quot;git mv&quot; to keep history. I executed second command 3 times, you can use something more clever if you have many files. Also make sure to write folder names in proper casing - filesystem is not case sensitive but git repository is:
+      <span style="color:#008080;">mkdir P1
+      git mv [filename] P1
+      git add .
+      git commit -m &quot;Moved to P1&quot;</span></li>
+      <li>Push the changes in the new branch in new repository:
+      <span style="color:#008080;">git push -u origin P1_migrated</span></li>
+      <li>Delete the folder:
+      <span style="color:#008080;">cd ..
+      rmdir P1 /s /q</span></li>
+      <li>Make steps 3-9 for the second project, you will get P2_migrated</li>
+      <li>Go to the new repository and fetch the branches:
+      <span style="color:#008080;">cd P3
+      git checkout master
+      git fetch</span></li>
+      <li>Merge the migrated branches, with the switch to allow unrelated histories:
+      <span style="color:#008080;">git merge origin/P1_migrated --allow-unrelated-histories
+      git merge origin/P2_migrated --allow-unrelated-histories</span></li>
+      <li>And the final step:
+      <span style="color:#008080;">git push</span></li>
+      </ol>
+      <i>I had to do steps 4-9 couple times to filter several directories, git cannot accept multiple directories in --subdirectory-filter. So instead of 7 I switched to the existing branch:</i>
+      <span style="color:#008080;">git fetch
+      git pull origin P1 --allow-unrelated-histories</span>
+
+      Git is powerful and can do cool things.
+      Hope you will find this article helpful. At least I may use it later (and I did).
+
+    </div>
+    <b>Sources used:</b>
+    <ul>
+      <li><a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/" target="_blank">https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/</a></li>
+      <li><a href="https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/" target="_blank">https://saintgimp.org/2013/01/22/merging-two-git-repositories-into-one-repository-without-losing-file-history/</a></li>
+    </ul>
+  </article>
+  <p><a href="../index.html" class="blog-back-link">← Back to blog</a></p>
+</body>
+</html>
