@@ -1,0 +1,50 @@
+<!-- post-id: atcar -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>C# Source Generators</title>
+  <link rel="stylesheet" href="../blog-styles.css">
+</head>
+<body class="blog">
+  <article>
+    <h1>C# Source Generators</h1>
+    <p class="blog-meta">2026-04-10</p>
+    <i>This is going to be quite a long article with lots of condensed information, because I intend to have it as a quick reference for myself.</i>
+    
+    <h2>What are Source Generators</h2>
+    <p>
+      For repetitive boilerplate we all want to get the code generated in some way.
+      Previously we used Build tasks with custom code and T4 templates (*.tt).
+    </p>
+    <p>
+      Since .Net 5 there is a new way: Source Generators.
+      It’s a step within compilation pipeline, that can inspect compiled code and add extra code to your project
+      that is then optimized and converted to IL as part of the project.
+      This gives reflection-like power with regular code performance.
+    </p>
+    <!--cut text="Continue reading..."-->
+    <p>
+      I will demonstrate a feature on a small project: FastMapper.
+      Normally we use AutoMapper to map objects, but it relies on reflection and therefore has performance penalty in runtime.
+      I know that other mapping libraries that use Source Generators already exist, I just want to show the concept.
+    </p>
+
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>Visual Studio 2022 or higher</li>
+      <li>In VS, .Net Compiler Platform SDK</li>
+    </ul>
+
+    <h2>Start</h2>
+    <ul>
+      <li>Create .Net project where we want to test the thing.</li>
+    </ul>
+
+    <br/>
+    <i><b>I will continue writing it. I promise. But if you are curious, write a comment, it will help me prioritize.</b></i>
+    <br/>
+  </article>
+  <p><a href="../index.html" class="blog-back-link">← Back to blog</a></p>
+</body>
+</html>
