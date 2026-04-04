@@ -39,6 +39,32 @@ body.blog {
   border-radius: 8px;
   margin-bottom: 16px;
 }
+
+
+/* PRIVATE POSTS */
+.blog article.private {
+  background: #fffbeb;
+  border-color: #facc15;
+}
+.blog article.private h2 a {
+  color: #b45309;
+}
+.blog article.private .blog-meta {
+  color: #92400e;
+}
+.blog article.private::before {
+  content: "Private post";
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+
 .blog .blog-post-list .blog-meta {
   color: #6b7280;
   font-size: 0.95rem;
