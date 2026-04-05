@@ -34,15 +34,28 @@
     <p>
       Agents are great. I mean, really powerful now.
       But still not as good as a human.
-      Creating a blog is quite a standard task, so with good prompt I got more or less what I want quite fast.
+    </p>
+    <p>
+      I asked it to create a static blog with html and css, so that it can be hosted on Github pages.
+      I included in the prompt that I will include it in my ASP.Net website, which will just index and parse html and display pages almost as is, adding comments and external styling.
+      So styles should have distinct names and be reusable.
+    </p>
+    <p>
+      The results were quite good, though not perfect.
+      Maybe it's because creating a blog is quite a standard task, so AI is trained on a lot of good examples.
       It created multiple files, well organised, all quite good.
-      But a lot of details needed polishing.
+    </p>
+    <p>
+      Still, html was slightly overcomplicated.
+      I had to simplify a bit to make it easier to write and reuse in ASP.Net.
+      Honestly, one thing I kept in mind but didn't tell Copilot - for me the main reason to use Github is that I can create content in client from the phone.
+      This really is simpler than creating any editor for a blog, but this meant that html must be extremely simple and css easy to remember and simple to reuse.
+      Therefore I had to simplify css and html a bit myself, but there TAB-completion worked perfectly, it was enough to start and it helped to finalise.
     </p>
     <p>
       AI is already better than me in creating UI styles.
       I mean, I always knew I am a terrible UI designer, and my website is still quite ugly, as you can see.
-      But AI manages to generate quite acceptably looking style.
-      I am a bit worried that it it too standard, lacking personal touch.
+      I am a bit worried that it it too "standard", lacking "personal touch", but for a blog I consider it acceptable.
     </p>
     <p>
       AI is extremely good at routine tasks - for example, I for some reason wrote this text as unsigned list (ul), and then just asked to change to paragraphs.
@@ -52,6 +65,38 @@
       For code AI was never hallucinating to much, or at least it was easy to discover.
       But this time I didn't encounter any hallucinations at all.
     </p>
+    <p>
+      The next task was to implement parsing index.html and displaying in my website.
+    </p>
+    <p>
+      Fist version I got was functionally correct but didn't look well.
+      This is when I discovered that generated css was not entirely good to reuse.
+      There were things bound to "body", that obviously couldn't work.
+      This part was quite easy to improve, but was the first one where I found it's faster to do than guide Copilot.
+    </p>
+    <p>
+      C# code was "acceptable".
+      I mean it worked, but it was one big method.
+      I prefer things split to small logical methods.
+      So for the start I at least moved logic to parse static site to a separate class.
+    </p>
+    <p>
+      As a next step I asked copilot to create a new controller and view to show blog post.
+      It worked, but it again added one big method to a controller.
+      I had to refactor it and move to a separate class. 
+      Where I refactored again to extract common methods - like paraing a tag.
+    </p>
+    <p>
+      Quite interestingly, Copilot failed to find existing code to reuse and failed to write methods for repeating functions - like parsing tags.
+      It was just repeating several lines of code finding beginning and ending of the tag.
+      It doesn't even offer to use any library - I imagine there must be some.
+      I would probably avoid using thirdparty library for something that simple, but I would understand an approach.
+    </p>
+    
+    
+    
+    
+    
     <h3>What I didn't like:</h3>
     <p>
       It organises code like a junior.
