@@ -84,7 +84,7 @@
       As a next step I asked copilot to create a new controller and view to show blog post.
       It worked, but it again added one big method to a controller.
       I had to refactor it and move to a separate class. 
-      Where I refactored again to extract common methods - like paraing a tag.
+      Where I refactored again to extract common methods - like parsing tags.
     </p>
     <p>
       Quite interestingly, Copilot failed to find existing code to reuse and failed to write methods for repeating functions - like parsing tags.
@@ -92,8 +92,65 @@
       It doesn't even offer to use any library - I imagine there must be some.
       I would probably avoid using thirdparty library for something that simple, but I would understand an approach.
     </p>
-    
-    
+    <p>
+      At this moment I looked at css and wanted to make it nicer.
+      With scss I use at work, I got used to well organised nested classes, and asked copilot to organise css that way.
+      Several times in a row it said that it understood me and generated the same three separate classes.
+      It's already good that it didn't start hallucinating and implementing not-working stuff.
+      I had to explicitly ask if it is possibly to get an answer that actually not.
+      So Copilot still works in "pleasing the master" mode, we need to remember to formulate questions in a way that suggests questioning the question itself.
+      Which I find quite a serious limitation.
+      At least at this area human colleagues still have a big advantage.
+    </p>
+    <p>
+      Then I asked it to implement "Comments" in ASP.Net.
+      It decided to implement simple action in controller and some JavaScript code.
+      In general it was fine.
+    </p>
+    <p>
+      Then I went on asking to make tree of comments (with replies).
+      Resulting html was a bit too complicated, but then I made it nicer half-manually.
+    </p>
+    <p>
+      Still, it implemented one field to add comment in the bottom.
+      I would prefer that box for reply would be displayed right below the respective comment, but for that Copilot generated repetitive html.
+      It didn't offer template for comment that can be reused where required, so I just didn't apply that portion and left it for later.
+    </p>
+    <p>
+      Next task was to mark new comments.
+      Despite pretty working code, surprisingly, Copilot preferred Javascript to css.
+      When asked, it started moving things to css, but some leftovers like adding a label "New" stayed in JavaScript.
+      When I then asked in VisualStudio Code (other model) to style "private" post, it added text of a badge via css, which I find much cleaner.
+      Which shows that models I used in VisualStudio may be just a bit weaker.
+    </p>
+    <p>
+      And the last task I wanted is to migrate existing comments from Live Journal.
+      As agents (at least on my setup) can't access internet, I proceeded with copypasting and formatting all comments, so that C# code can then parse and insert.
+      Copilot offered <i>almost</i> functional solution, but with couple of weaknesses.
+      It failed to offer reasonable format, therefore generated quite overcomplicated code to parse it.
+      It was reading line by line and either adding to "previous" comment or starting new.
+    </p>
+    <p>
+      I then suggested another format that can be simply split to comments, and these processed in cycle.
+      But then had to explicitly ask to rewrite code in this way.
+    </p>
+    <p>
+      The code was quite "junior level" for me.
+      Copilot created only one method to insert the comment to the database, all the rest went to one big method.
+    </p>
+    <p>
+      I wrote above "almost" - yes, here Copilot didn't get enough context to check the rest of my code.
+      Therefore it didn't find correct name of connection string in my code, instead hallucinated almost correct one.
+      Also it didn't see that it is EntityFramework connection string, so it simply didn't work.
+      I had to explicitly mention it, and then it offered a correct solution.
+    </p>
+    <p>
+      Next problem was that connection string didn't have a password (which is correct for the code I commit to the public repository).
+      Copilot immediately suggested to add password to the connection string.
+      Which is for me quite an important indicator - the offered solution is completely functional, but has bug security issue.
+      If someone wouldn't control the mmodel, this could end up in production.
+    </p>
+      
     
     
     
