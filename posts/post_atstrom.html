@@ -70,35 +70,54 @@
     
     <h3>Price structure</h3>
     <p>
-      I created a small utility that calculates the price for you with all the details.
-    </p>
-    <p>
-      Price is split to fixed part (Grundpreis) and consumption part (price of kWh).
-      In my contract I have 14.3 cents per kWh plus 3.99 EUR monthly.
-      But I end up paying 26 cents per kWh plus 123 EUR.
-      Let’s see why.
+      I created a <a href="https://lissov.net/angular/utils/strom">small utility</a> that calculates the price for you with all the details.
+      Lets see in details.
     </p>
     <p><i>
-      All numbers below are for 2026.
+      Example below is for 2000 kWh consumption in 2026.
       Taxes and fees slightly change every year.
     </i></p>
     <p>
-      First category is obvious: these are costs to the provider, direct per consumption and monthly.
+      Everywhere below I wrote prices incl. VAT.
+      If you check the sources, there you often see net price, don't forget to add 20%.
     </p>
     <p>
-      Then are network costs.
+      We begin with "provider costs" - this is cost of the energy you consume, e.g. cost of generation.
+      As many services in Austria, you have price per consumption (for example 11.4 cents per kWh) and fixed monthly fee (4.79 EUR).
+      Numbers are just an example of my current contract with Verbund.
+      This results in 228 EUR based on consumption plus 57.48 EUR fixed cost: <b>285.48 EUR to provider</b>.
+    </p>
+    <p><i>
+      According to Austrian law, you have a free choice of provider and an easy and free possibility to change (of course, subject to binding period).
+      Therefore providers are competing with freely defined prices.
+      You can compare prices and change provider on <a href="https://www.e-control.at/tarifkalkulator#/">E-Control</a> or <a href="https://durchblicker.at/strom">Durchblicker</a>.
+    <p>
+      Then there are <b>network costs</b>.
+      Network company owms and operates physical cables and equipment in your area, therefore delivering energy that you buy from providers.
+      Logically, there is a single network and a single company in every area, for example Wiener Netze in Vienna.
+      Because this is a natural monopoly, price of the network services is prescribed by the law: <a href="https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20010107&FassungVom=2022-01-01">Systemnutzungsentgelteverordnung</p>
+    </p>
+    <p>
+      Again you have fixed and consumption part of the price.
       The fixed price for the network is called <a href="https://www.wienernetze.at/o/document/wn_ex0105-netznutzungs-und-netzverlustentgelt_2026_v2_01_geschutzt">"Leistungspreis"</a>, meaning "price of power".
-      It depends on maximum power of your connection, normally it's "level 7".
-      For Vienna it's <b>54 EUR</b> per year (4.8 a month).
-      As you can see, there are 3 options: without power measurement (normal for households), with measurement (price is defined based on the actual maximum power for the period) and with interrupting connection.
+      Roughly it's the price you pay for having the connection to your house, and for keeping it operationa(even if you decide not to consume electricity).
+      Price depends on maximum power of your connection.
+      For a regular household it's "level 7, not measured": <b>57.60 EUR</b> per year (4.8 a month).
     </p>
     <p>
-      Grundpreis = (GP + NL + NV + ML )...
-      Consumption = (CP + NN
+      In addition there is another fixed payment called "Entgelt für Messleistungen".
+      This is a payment for measuring your consumption, 31.97 a year regardless of smart meters, manual check, whatever.
     </p>
-    
     <p>
-      <b>GP</b> - Grundpreis (fix price) ane <b>CP</b> - consumption price (per kWh) are defined in your contract with provider.
+      Your payment to the network for the actually delivered energy is again split in two parts:
+      "Netznutzungsentgelt", payment for network usage, 8.88 cents per kWh;
+      and "Netzverlustentgelt", payment for losses in the network, 0.84 cents per kWh.
+      This results in 194.40 EUR for consumed 2000 kWh.
+    </p>
+    <p>
+      Therefore in total in our example you pay <b>283.97 EUR to the metwork</b>
+    <p>
+
     </p>
     <p>
       <b>NL</p> - Netzwerk Leistungspreis - price per year for provided power by the network.
