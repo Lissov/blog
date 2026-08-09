@@ -17,6 +17,10 @@
       <button onclick="start()">Beginnen!</button>
     </div>
     
+    <div id="askword">
+      Letters: <span id="spn_words"></span>
+    </div>
+    
     <details>
       <summary><b>Spielregeln</b></summary>
       Ich schreibe die Regeln hier.
@@ -29,8 +33,11 @@
       var el_log = document.getElementById("log");
       var el_numplayers = document.getElementById("numplayers");
       var inp_numplayers = document.getElementById("num_players");
+      var alpabet "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       
-      var numPlayers =2;
+      var numPlayers = 2;
+      var currentPlayer;
+      var letters = [];
       
       function log(text) {
         el_log.innerHTML += text + "<br/>";
@@ -43,9 +50,25 @@
         inp_numplayers.value = numPlayers;
       }
       function start() {
-        log("start!");
         el_numplayers.style.display = "none";
         numPlayers = inp_numplayers.value;
+        currentPlayer = 1;
+        log("Start with " + numPlayers + " players!");
+        askWord();
+      }
+      function askWord() {
+        log("Ask word " + currentPlayer);
+        giveLetters();
+        log(string.join(" ", letters);
+      }
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+      function giveLetters() {
+        letters = [];
+        for (int i=1; i<=8; i++) {
+          letters.push(alphabet[getRamdom(alphabet.Length)]);
+        }
       }
       init();
     </script>
