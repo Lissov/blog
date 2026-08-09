@@ -34,6 +34,7 @@
       var el_log = document.getElementById("log");
       var el_numplayers = document.getElementById("numplayers");
       var inp_numplayers = document.getElementById("num_players");
+      var el_askword = document.getElementById("askword");
       var alpabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       
       var numPlayers = 2;
@@ -47,6 +48,7 @@
         el_log.innerHTML = "";
         log("Initialising...");
         el_numplayers.style.display = "visible";
+        el_askword.style.display = "none";
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
       }
@@ -59,6 +61,7 @@
       }
       function askWord() {
         log("Ask word " + currentPlayer);
+        el_askword.style.display = "visible";
         giveLetters();
         log(string.join(" ", letters);
       }
