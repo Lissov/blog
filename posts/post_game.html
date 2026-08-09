@@ -6,20 +6,10 @@
   <title>Wortspiel</title>
   <link rel="stylesheet" href="../blog-styles.css">
 </head>
-<body class="blog">
+<body class="blog" style="font-size:20px">
   <article>
     <h1>Wortspiel mit HTML + JS</h1>
     <p class="blog-meta">2026-08-10</p>
-    
-    <div id="myDiv"></div>
-<script>
-function showText() {
-    document.getElementById("myDiv").textContent = "Hello!";
-}
-
-showText();
-</script>
-
     
     <div id='numplayers'>
       Wie viele Spiler spielen jetzt?
@@ -31,7 +21,8 @@ showText();
       Ich schreibe die Regeln hier.
     </details>
     
-    <div #id="log"></div>
+    <hr/>
+    <div id="log"></div>
     
     <script>
       document.getElementById('log').textContent = "Initialising!\n";
