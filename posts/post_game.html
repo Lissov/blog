@@ -13,8 +13,8 @@
     
     <div id='numplayers' style="font-size:20px">
       Wie viele Spiler spielen jetzt?
-      <input type="number" text="2"/>
-      <button onClick="start()">Beginnen!</button>
+      <input type="number" value="2" id="num_players">
+      <button onclick="start()">Beginnen!</button>
     </div>
     
     <details>
@@ -28,17 +28,24 @@
     <script>
       var el_log = document.getElementById("log");
       var el_numplayers = document.getElementById("numplayers");
+      var inp_numplayers = document.getElementById("num_players");
+      
+      var numPlayers =2;
+      
       function log(text) {
         el_log.innerHTML += text + "\n";
       }
       function init(){
         el_log.innerHTML = "";
         log("Initialising...");
-        el_numplayers.visible = true;
+        el_numplayers.style.display = "visible";
+        numPlayers = 2;
+        inp_numplayers.value = numPlayers;
       }
       function start() {
         log("start!");
-        el_numplayers.visible = false;
+        el_numplayers.style.display = "none";
+        numPlayers = inp_numplayers.value;
       }
       init();
     </script>
