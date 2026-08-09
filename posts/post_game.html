@@ -13,7 +13,7 @@
     
     <script>
       function init(){
-        var log = document.findElementById('log');
+        var log = document.getElementById('log');
         log.innerHTML = "Initialising\n";
       }
       init();
@@ -22,7 +22,7 @@
       <summary><b>Spielregeln</b></summary>
       Ich schreibe die Regeln hier.
     </details>
-    <div #äid='log'></div>
+    <div #id='log'></div>
     
     <!--div class="split-lines">
       Our project is historically a combination of 2 projects, each of then had own repository. Let&#39;s call them P1 and P2. And we have a small team that works on a completely separate feature (Reports), they were previously not happy that they have to work in same repository (and have unnecessary dependency) but now their code is scattered in 2 repositories.
