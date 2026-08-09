@@ -29,10 +29,10 @@
       var el_log = document.getElementById("log");
       var el_numplayers = document.getElementById("numplayers");
       function log(text) {
-        el_log.textContent += text + "\n";
+        el_log.innerHtml += text + "\n";
       }
       function init(){
-        el_log.textContent = "";
+        el_log.innerHtml = "";
         log("Initialising...");
         el_numplayers.visible = true;
       }
