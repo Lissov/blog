@@ -9,7 +9,7 @@
 <body class="blog">
   <article>
     <h1>Wortspiel mit HTML + JS</h1>
-    <p class="blog-meta">2026-08-10</p>
+    <p class="blog-meta">2026-08-09</p>
     
     <div id='numplayers' style="font-size:20px">
       Wie viele Spiler spielen jetzt?
@@ -70,8 +70,13 @@
         givePlayer();
       }
       function givePlayer() {
+        try{
+          log("...");
         el_giveplayer.style.display = "visible";
         el_playerNum1.innerHtml = currentPlayer;
+        } catch(e) {
+          log(e);
+        }
       }
       function askWord() {
         log("Ask word " + currentPlayer);
