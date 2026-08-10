@@ -42,6 +42,8 @@
     <h1>Wortspiel mit HTML + JS</h1>
     <p class="blog-meta">2026-08-11</p>
     
+    <div id="badge"></div>
+    
     <div id='numplayers' style="font-size:48px">
       Wie viele Spieler spielen jetzt?<br/>
       <input type="number" value="2" style="width:120px" id="num_players">
@@ -57,7 +59,6 @@
       <button onclick="askWord()">Sehe deine Buchstaben</button>
     </div>
     
-    <div id="badge"></div>
     <div id="askword" >
       Deine Buchstaben:<br/>
       <div id="plr_letters" style="margin:auto"></div>
@@ -109,7 +110,7 @@
         el_numplayers.style.display = "visible";
         el_giveplayer.style.display = "none";
         el_askword.style.display = "none";
-        //hideBadge();
+        hideBadge();
         
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
@@ -185,7 +186,7 @@
       function hideBadge() { el_badge.style.display = "none"; }
       function badgeError(text) {
         el_badge.style.display = "block";
-        el_badge.class = "badge error";
+        el_badge.classList = ["badge", "error"];
         el_badge.innerHTML = text;
       }
       init();
