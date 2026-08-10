@@ -48,7 +48,8 @@
       <div id="plr_letters" style="margin:auto"></div>
       <br/>
       Dein Wort aus einige (oder alle) der Buchstaben:
-      <input type="text" id="plr_word"><br/>
+      <input type="text" id="plr_word"
+        oninput="this.value=this.value.toUpperCase()"><br/>
       <button onclick="setWord()">Das ist mein Wort</button>
     </div>
     <br/><br/>
