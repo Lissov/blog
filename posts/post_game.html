@@ -18,9 +18,9 @@
     </div>
     
     <div id="askword">
-      Letters: <span id="spn_words"></span>
+      Your letters: <span id="spn_words"></span>
     </div>
-    
+    <hr/>
     <details>
       <summary><b>Spielregeln</b></summary>
       Ich schreibe die Regeln hier.
@@ -57,9 +57,9 @@
         numPlayers = inp_numplayers.value;
         currentPlayer = 1;
         log("Start with " + numPlayers + " players!");
-        //askWord();
+        askWord();
       }
-      /*function askWord() {
+      function askWord() {
         log("Ask word " + currentPlayer);
         el_askword.style.display = "visible";
         giveLetters();
@@ -70,10 +70,10 @@
       }
       function giveLetters() {
         letters = [];
-        for (int i=1; i<=8; i++) {
+        for (var i=1; i<=8; i++) {
           letters.push(alphabet[getRamdom(alphabet.Length)]);
         }
-      }*/
+      }
       init();
     } catch (ex) {
       document.getElementById("log").innerHTML = (ex);
