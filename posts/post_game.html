@@ -11,7 +11,7 @@
       background-color: lightblue;
       border-radius: 8px;
       padding: 8px;
-      margin: 20px;
+      margin: 10px;
     }
     .vowel {
       background-color: yellow !important;
@@ -101,7 +101,7 @@
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
             '<span class="letter'
-            + (isVowel(letters[i]) ? "vowel" : "")
+            + (isVowel(letters[i]) ? " vowel" : "")
             +'">'
             + letters[i]
             +'</span>&nbsp;';
