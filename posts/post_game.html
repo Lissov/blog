@@ -65,7 +65,7 @@
       }
       function start() {
         el_numplayers.style.display = "none";
-        numPlayers = inp_numplayers.value;
+        numPlayers = +(inp_numplayers.value);
         currentPlayer = 1;
         log("Start with " + numPlayers + " players!");
         givePlayer();
@@ -75,17 +75,11 @@
         el_playerNum1.innerHTML = currentPlayer.toString();
       }
       function askWord() {
-        try{
         log("Ask word " + currentPlayer);
         el_giveplayer.style.display = "none";
         el_askword.style.display = "block";
         giveLetters();
-        log("Letters " + letters);
         log(letters.join(" "));
-        } catch(e) {
-          log("Error");
-          log(e);
-        }
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -94,7 +88,6 @@
         letters = [];
         for (var i=1; i<=8; i++) {
           log(getRandomInt(alphabet.Length));
-          log(alphabet[i]);
           var ltr = alphabet[getRandomInt(alphabet.Length)];
           log("letter " + i + " = " + ltr);
           letters.push(ltr);
