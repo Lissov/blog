@@ -9,9 +9,9 @@
 <body class="blog">
   <article>
     <h1>Wortspiel mit HTML + JS</h1>
-    <p class="blog-meta">2026-08-09</p>
+    <p class="blog-meta">2026-08-10</p>
     
-    <div id='numplayers' style="font-size:20px">
+    <div id='numplayers' style="font-size:36px">
       Wie viele Spiler spielen jetzt?
       <input type="number" value="2" id="num_players">
       <button onclick="start()">Beginnen!</button>
@@ -57,7 +57,7 @@
         el_log.innerHTML = "";
         log("Initialising...");
         el_numplayers.style.display = "visible";
-        //el_giveplayer.style.display = "none";
+        el_giveplayer.style.display = "none";
         el_askword.style.display = "none";
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
@@ -71,7 +71,7 @@
       }
       function givePlayer() {
         try{
-        el_giveplayer.style.display = "visible";
+          el_giveplayer.style.display = "block";
         el_playerNum1.innerHtml = currentPlayer.toString();
           log("...");
         } catch(e) {
