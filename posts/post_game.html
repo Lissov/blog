@@ -24,7 +24,8 @@
     </div>
     
     <div id="askword" >
-      Deine Buchstaben: <span id="spn_words"></span>
+      Deine Buchstaben:<br/>
+      <div id="spn_words" style="margin:auto"></div>
     </div>
     <hr/>
     <details>
@@ -87,7 +88,7 @@
       function giveLetters() {
         letters = [];
         for (var i=1; i<=8; i++) {
-          letters.push(alphabet[getRamdom(alphabet.Length)]);
+          letters.push(alphabet[getRandomInt(alphabet.Length)]);
         }
       }
       init();
