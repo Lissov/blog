@@ -146,7 +146,7 @@
             log(ch);
             ind = letters.indexOf(ch, ind+1);
             log(ind);
-          } while (ind>=0 && !used[ind])
+          } while (ind>=0 && used[ind])
           if (ind < 0) return false;
           used[ind] = true;
         }
