@@ -5,6 +5,13 @@
   <meta charset="utf-8">
   <title>Wortspiel</title>
   <link rel="stylesheet" href="../blog-styles.css">
+  <style>
+    .letter {
+      font-size: 64px;
+      background-color: lightblue;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body class="blog">
   <article>
@@ -25,7 +32,7 @@
     
     <div id="askword" >
       Deine Buchstaben:<br/>
-      <div id="spn_words" style="margin:auto"></div>
+      <div id="plr_letters" style="margin:auto"></div>
     </div>
     <hr/>
     <details>
@@ -44,8 +51,10 @@
       var el_askword = document.getElementById("askword");
       var el_giveplayer = document.getElementById("give_player");
       var el_playerNum1 = document.getElementById("spl_num_1");
-      
+      var el_letters = document.getElementById("plr_letters");
+            
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var lettersPerPlayer = 8;
       
       var numPlayers = 2;
       var currentPlayer;
@@ -80,13 +89,20 @@
         el_askword.style.display = "block";
         giveLetters();
         log(letters.join(" "));
+        el_letters.innerHTML = "";
+        for (var i=0; i<lettersPerPlayer;i++) {
+          el_letters.innerHTML +=
+            '<span class="letter">'
+            + letters[i]
+            +'</span>&nbsp;';
+        }
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
       }
       function giveLetters() {
         letters = [];
-        for (var i=1; i<=8; i++) {
+        for (var i=1; i<=lettersPerPlayer; i++) {
           log(getRandomInt(alphabet.length));
           var ltr = alphabet[getRandomInt(alphabet.length)];
           log("letter " + i + " = " + ltr);
