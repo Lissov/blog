@@ -110,16 +110,16 @@
       function init(){
         el_log.innerHTML = "";
         log("Initialising...");
-        el_numplayers.style.display = "visible";
-        el_giveplayer.style.display = "none";
-        el_askword.style.display = "none";
+        show(el_numplayers);
+        hide(el_giveplayer);
+        hide(el_askword);
         hideBadge();
         
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
       }
       function start() {
-        el_numplayers.style.display = "none";
+        hide(el_numplayers);
         numPlayers = +(inp_numplayers.value);
         players = [];
         words=[];
@@ -135,7 +135,7 @@
         givePlayer();
       }
       function givePlayer() {
-        el_giveplayer.style.display = "block";
+        show(el_giveplayer);
         el_playerNum1.innerHTML = (currentPlayer + 1).toString();
         el_playerName.value = players[currentPlayer];
       }
@@ -143,8 +143,9 @@
         players[currentPlayer] = el_playerName.value;
 
         log("Ask word " + currentPlayer + " > " + players[currentPlayer]);
-        el_giveplayer.style.display = "none";
-        el_askword.style.display = "block";
+        hide(el_giveplayer);
+        show(el_askword);
+        el_askword.value = "";
         giveLetters();
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
@@ -163,12 +164,13 @@
           return;
         }
         hideBadge();
+        hide(el_askword);
         words[currentPlayer] = word;
         if (currentPlayer < numPlayers) {
           currentPlayer++;
           givePlayer();
         } else {
-          log("Starting round!")
+          log("Starting round!");
         }
       }
       function getRandomInt(max) {
@@ -207,7 +209,9 @@
         el_badge.classList.add("error");
         el_badge.innerHTML = text;
       }
-
+      function hide(element) { element.style.display = "none"; }
+      function show(element) { element.style.display = "block"; }
+      
       init();
     </script>
   </article>
