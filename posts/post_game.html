@@ -126,7 +126,7 @@
         el_playerNum1.innerHTML = (currentPlayer + 1).toString();
         el_playerName.value = currentPlayer < playersDefault.length
             ? playersDefault[currentPlayer]
-            : "Player " + currentPlayer;
+            : "Player " + (currentPlayer + 1).toString();;
       }
       function askWord() {
         log("Ask word " + currentPlayer);
