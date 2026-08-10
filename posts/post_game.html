@@ -151,8 +151,8 @@
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
             '<span class="letter'
-            + (isVowel(letters[i]) ? " vowel" : "")
-            +'">'
+            + (isVowel(letters[i]) ? ' vowel' : '')
+            +'" onclick="el_playerWord.value+="'+letters[i]+'">'
             + letters[i]
             +'</span>&nbsp;';
         }
