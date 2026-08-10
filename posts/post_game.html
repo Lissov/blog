@@ -11,6 +11,7 @@
     }
     button {
       font-size: 48px;
+      margin-top: 4px;
     }
     .letter {
       font-size: 64px;
@@ -32,7 +33,7 @@
     
     <div id='numplayers' style="font-size:48px">
       Wie viele Spiler spielen jetzt?<br/>
-      <input type="number" value="2" width="120px" id="num_players">
+      <input type="number" value="2" style="width:120px" id="num_players">
       <button onclick="start()">Beginnen!</button>
     </div>
     
@@ -119,7 +120,8 @@
       }
       function setWord() {
         var word = el_playerWord.value;
-        log(word);
+        log("word:" + word);
+        log(isValudWord(word, letters);
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -131,6 +133,20 @@
         }
       }
       function isVowel(ch) { return vowels.includes(ch); }
+      function isValidWord(word, letters) {
+        var used = [];
+        for (var i=0; i<=lettersPerPlayer; i++)
+          used.push(false);
+        for (let ch in word) {
+          var ind;
+          do {
+            ind = letters.indexOf(ch);
+          } while (ind>=0 && !used[ind])
+          if (ind < 0) return false;
+          used[ind] = true;
+        }
+        return true;
+      }
       init();
     } catch (ex) {
       document.getElementById("log").innerHTML = (ex);
