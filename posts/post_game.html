@@ -166,7 +166,7 @@
         hideBadge();
         hide(el_askword);
         words[currentPlayer] = word;
-        if (currentPlayer < numPlayers) {
+        if (currentPlayer+1 < numPlayers) {
           currentPlayer++;
           givePlayer();
         } else {
