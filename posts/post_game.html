@@ -145,7 +145,7 @@
         log("Ask word " + currentPlayer + " > " + players[currentPlayer]);
         hide(el_giveplayer);
         show(el_askword);
-        el_askword.value = "";
+        el_playerWord.value = "";
         giveLetters();
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
