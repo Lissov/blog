@@ -17,11 +17,13 @@
       <button onclick="start()">Beginnen!</button>
     </div>
     
-    <div id="give_player">
-      Spieler <span id="spl_num_1"></span> an der Reihe.
+    <div id="give_player" style="font-size:large">
+      Spieler <span id="spl_num_1"></span> an der Reihe.<br/>
+      Niemand anderer schaut?<br/>
+      <button onclick="doAskWord()">Schau die Buchstaben</button>
     </div>
     
-    <div id="askword">
+    <div id="askword" >
       Deine Buchstaben: <span id="spn_words"></span>
     </div>
     <hr/>
@@ -39,6 +41,7 @@
       var el_numplayers = document.getElementById("numplayers");
       var inp_numplayers = document.getElementById("num_players");
       var el_askword = document.getElementById("askword");
+      var el_giveplayer = document.getElementById("give_player");
       var alpabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       
       var numPlayers = 2;
@@ -52,6 +55,7 @@
         el_log.innerHTML = "";
         log("Initialising...");
         el_numplayers.style.display = "visible";
+        el_giveplayer.style.display = "none";
         el_askword.style.display = "none";
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
@@ -61,7 +65,10 @@
         numPlayers = inp_numplayers.value;
         currentPlayer = 1;
         log("Start with " + numPlayers + " players!");
-        askWord();
+        givePlayer();
+      }
+      function givePlayer() {
+        el_giveplayer.style.display = "visible";
       }
       function askWord() {
         log("Ask word " + currentPlayer);
