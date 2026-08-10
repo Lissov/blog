@@ -50,8 +50,11 @@
     
     <div id="give_player" >
       Spieler <span id="spl_num_1"></span> an der Reihe.<br/>
-      Niemand anderer schaut?<br/>
-      <button onclick="askWord()">Schau die Buchstaben</button>
+      Spieler Name:<br/>
+      <input id="playerName"><br/>
+      <br/>
+      Nächster Schritt ist geheim. Niemand anderer schaut?<br/>
+      <button onclick="askWord()">Sehe deine Buchstaben</button>
     </div>
     
     <div id="badge"></div>
@@ -82,6 +85,7 @@
       var el_askword = document.getElementById("askword");
       var el_giveplayer = document.getElementById("give_player");
       var el_playerNum1 = document.getElementById("spl_num_1");
+      var el_playerName = document.getElementById("playerName");
       var el_letters = document.getElementById("plr_letters");
       var el_playerWord = document.getElementById("plr_word");
       var el_badge = document.getElementById("badge");
@@ -93,7 +97,9 @@
       var numPlayers = 2;
       var currentPlayer;
       var letters = [];
+      var players = [];
       
+      var playersDefault = ["Leon", "Kati", "Pavlo", "Maryna"];
       function log(text) {
         el_log.innerHTML += text + "<br/>";
       }
@@ -103,7 +109,7 @@
         el_numplayers.style.display = "visible";
         el_giveplayer.style.display = "none";
         el_askword.style.display = "none";
-        hideBadge();
+        //hideBadge();
         
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
@@ -118,9 +124,13 @@
       function givePlayer() {
         el_giveplayer.style.display = "block";
         el_playerNum1.innerHTML = currentPlayer.toString();
+        el_playerName.value = currentPlayer < playersDefault.length
+            ? playersDefault[currentPlayer]
+            : "Player " + currentPlayer;
       }
       function askWord() {
         log("Ask word " + currentPlayer);
+        players.push(el_playerName.value);
         el_giveplayer.style.display = "none";
         el_askword.style.display = "block";
         giveLetters();
