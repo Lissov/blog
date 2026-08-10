@@ -117,13 +117,13 @@
       function start() {
         el_numplayers.style.display = "none";
         numPlayers = +(inp_numplayers.value);
-        currentPlayer = 1;
+        currentPlayer = 0;
         log("Start with " + numPlayers + " players!");
         givePlayer();
       }
       function givePlayer() {
         el_giveplayer.style.display = "block";
-        el_playerNum1.innerHTML = currentPlayer.toString();
+        el_playerNum1.innerHTML = (currentPlayer + 1).toString();
         el_playerName.value = currentPlayer < playersDefault.length
             ? playersDefault[currentPlayer]
             : "Player " + currentPlayer;
