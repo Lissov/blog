@@ -32,7 +32,7 @@
       padding: 20px;
     }
     .error {
-      background-color: #ff9999;
+      background-color: #ffaaaa;
       border-color: red;
       color: red;
     }
@@ -189,7 +189,9 @@
       function hideBadge() { el_badge.style.display = "none"; }
       function badgeError(text) {
         el_badge.style.display = "block";
-        el_badge.classList = ["badge", "error"];
+        el_badge.classList.remove("warning");
+        el_badge.classList.remove("info");
+        el_badge.classList.add("error");
         el_badge.innerHTML = text;
       }
       init();
