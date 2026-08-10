@@ -9,7 +9,7 @@
 <body class="blog">
   <article>
     <h1>Wortspiel mit HTML + JS</h1>
-    <p class="blog-meta">2026-08-10</p>
+    <p class="blog-meta">2026-08-09</p>
     
     <div id='numplayers' style="font-size:36px">
       Wie viele Spiler spielen jetzt?<br/>
@@ -75,12 +75,17 @@
         el_playerNum1.innerHTML = currentPlayer.toString();
       }
       function askWord() {
+        try{
         log("Ask word " + currentPlayer);
         el_giveplayer.style.display = "none";
         el_askword.style.display = "block";
         giveLetters();
         log(letters.Length);
         log(string.join(" ", letters));
+        } catch(e) {
+          log("Error");
+          log(e);
+        }
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -88,6 +93,7 @@
       function giveLetters() {
         letters = [];
         for (var i=1; i<=8; i++) {
+          log("letter " + i);
           letters.push(alphabet[getRandomInt(alphabet.Length)]);
         }
       }
