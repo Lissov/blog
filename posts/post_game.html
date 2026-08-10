@@ -6,6 +6,9 @@
   <title>Wortspiel</title>
   <link rel="stylesheet" href="../blog-styles.css">
   <style>
+    input {
+      font-size: 56px;
+    }
     .letter {
       font-size: 64px;
       background-color: lightblue;
@@ -23,7 +26,7 @@
     <h1>Wortspiel mit HTML + JS</h1>
     <p class="blog-meta">2026-08-10</p>
     
-    <div id='numplayers' style="font-size:36px">
+    <div id='numplayers' style="font-size:48px">
       Wie viele Spiler spielen jetzt?<br/>
       <input type="number" value="2" id="num_players">
       <button onclick="start()">Beginnen!</button>
@@ -40,7 +43,7 @@
       <div id="plr_letters" style="margin:auto"></div>
       <br/>
       Dein Wort aus einige (oder alle) der Buchstaben:
-      <input style"font-size:48px">
+      <input type="text">
     </div>
     <hr/>
     <details>
