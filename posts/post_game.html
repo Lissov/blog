@@ -140,11 +140,11 @@
         var used = [];
         for (var i=0; i<=lettersPerPlayer; i++)
           used.push(false);
-        for (let ch in word) {
-          var ind;
+        for (let ch of word) {
+          var ind=-1;
           do {
             log(ch);
-            ind = letters.indexOf(ch);
+            ind = letters.indexOf(ch, ind+1);
             log(ind);
           } while (ind>=0 && !used[ind])
           if (ind < 0) return false;
