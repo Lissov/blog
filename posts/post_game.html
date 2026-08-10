@@ -142,6 +142,7 @@
           var ind;
           do {
             ind = letters.indexOf(ch);
+            log(ind);
           } while (ind>=0 && !used[ind])
           if (ind < 0) return false;
           used[ind] = true;
