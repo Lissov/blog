@@ -49,7 +49,7 @@
       <br/>
       Dein Wort aus einige (oder alle) der Buchstaben:
       <input type="text" id="plr_word"><br/>
-      <button onclick="setword()">Das ist mein Wort</button>
+      <button onclick="setWord()">Das ist mein Wort</button>
     </div>
     <br/><br/>
     <hr/>
@@ -119,7 +119,6 @@
         }
       }
       function setWord() {
-        log("here");
         var word = el_playerWord.value;
         log("word:" + word);
         log(isValidWord(word, letters));
