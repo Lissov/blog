@@ -88,7 +88,6 @@
         el_giveplayer.style.display = "none";
         el_askword.style.display = "block";
         giveLetters();
-        log(letters.join(" "));
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
@@ -103,10 +102,7 @@
       function giveLetters() {
         letters = [];
         for (var i=1; i<=lettersPerPlayer; i++) {
-          log(getRandomInt(alphabet.length));
-          var ltr = alphabet[getRandomInt(alphabet.length)];
-          log("letter " + i + " = " + ltr);
-          letters.push(ltr);
+          letters.push(alphabet[getRandomInt(alphabet.length)]);
         }
       }
       init();
