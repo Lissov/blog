@@ -10,6 +10,11 @@
       font-size: 64px;
       background-color: lightblue;
       border-radius: 8px;
+      padding: 8px;
+      margin: 20px;
+    }
+    .vowel {
+      background-color: yellow !important;
     }
   </style>
 </head>
@@ -54,6 +59,7 @@
       var el_letters = document.getElementById("plr_letters");
             
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
       
       var numPlayers = 2;
@@ -91,7 +97,9 @@
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
-            '<span class="letter">'
+            '<span class="letter'
+            + (isVowel(letters[i]) ? "vowel" : "")
+            +'">'
             + letters[i]
             +'</span>&nbsp;';
         }
@@ -105,6 +113,7 @@
           letters.push(alphabet[getRandomInt(alphabet.length)]);
         }
       }
+      function isVowel(ch) { return vowels.includes(ch); }
       init();
     } catch (ex) {
       document.getElementById("log").innerHTML = (ex);
