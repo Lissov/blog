@@ -138,9 +138,10 @@
         var used = [];
         for (var i=0; i<=lettersPerPlayer; i++)
           used.push(false);
-        for (let ch in word) {
+        for (let ch of word) {
           var ind;
           do {
+            log(ch);
             ind = letters.indexOf(ch);
             log(ind);
           } while (ind>=0 && !used[ind])
