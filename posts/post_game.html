@@ -24,6 +24,17 @@
     .vowel {
       background-color: yellow !important;
     }
+    .badge {
+      border: 3px solid;
+      border-radius: 8px;
+      width: 100%;
+      margin: 10px;
+    }
+    .error {
+      background-color: lightred;
+      border-color: red;
+      color: red;
+    }
   </style>
 </head>
 <body class="blog">
@@ -43,6 +54,7 @@
       <button onclick="askWord()">Schau die Buchstaben</button>
     </div>
     
+    <div id="badge"></div>
     <div id="askword" >
       Deine Buchstaben:<br/>
       <div id="plr_letters" style="margin:auto"></div>
@@ -72,7 +84,8 @@
       var el_playerNum1 = document.getElementById("spl_num_1");
       var el_letters = document.getElementById("plr_letters");
       var el_playerWord = document.getElementById("plr_word");
-                  
+      var el_badge = document.getElementById("badge");
+            
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
@@ -90,6 +103,8 @@
         el_numplayers.style.display = "visible";
         el_giveplayer.style.display = "none";
         el_askword.style.display = "none";
+        hideBadge();
+        
         numPlayers = 2;
         inp_numplayers.value = numPlayers;
       }
@@ -121,8 +136,13 @@
       }
       function setWord() {
         var word = el_playerWord.value.trim();
+        if (!isValidWord(word, letters)) {
+          badgeError("Wort [" + word + "] ist nicht korrekt mit deiner Buchstaben. Versuche noch Mal.");
+          return;
+        }
+        hideBadge();
         log("word:" + word);
-        log(isValidWord(word, letters));
+        log();
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -151,6 +171,12 @@
           used[ind] = true;
         }
         return true;
+      }
+      function hideBadge() { el_badge.style.display = "none"; }
+      function badgeError(text) {
+        el_badge.style.display = "block";
+        el_badge.class = "badge error";
+        el_badge.innerHTML = text;
       }
       init();
     } catch (ex) {
