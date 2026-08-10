@@ -15,6 +15,7 @@
       border-radius: 8px;
       padding: 8px;
       margin: 10px;
+      width: 80px;
     }
     .vowel {
       background-color: yellow !important;
@@ -103,11 +104,11 @@
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
-            '<span class="letter'
+            '<div class="letter'
             + (isVowel(letters[i]) ? " vowel" : "")
             +'">'
             + letters[i]
-            +'</span>&nbsp;';
+            +'</div>&nbsp;';
         }
       }
       function getRandomInt(max) {
