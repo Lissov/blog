@@ -9,6 +9,9 @@
     input {
       font-size: 56px;
     }
+    button {
+      font-size: 48px;
+    }
     .letter {
       font-size: 64px;
       background-color: lightblue;
@@ -29,7 +32,7 @@
     
     <div id='numplayers' style="font-size:48px">
       Wie viele Spiler spielen jetzt?<br/>
-      <input type="number" value="2" id="num_players">
+      <input type="number" value="2" width="120px" id="num_players">
       <button onclick="start()">Beginnen!</button>
     </div>
     
@@ -44,7 +47,8 @@
       <div id="plr_letters" style="margin:auto"></div>
       <br/>
       Dein Wort aus einige (oder alle) der Buchstaben:
-      <input type="text">
+      <input type="text" id="plr_word"><br/>
+      <button onclick="setword()">Das ist mein Wort</button>
     </div>
     <hr/>
     <details>
@@ -64,7 +68,8 @@
       var el_giveplayer = document.getElementById("give_player");
       var el_playerNum1 = document.getElementById("spl_num_1");
       var el_letters = document.getElementById("plr_letters");
-            
+      var el_playerWord = document.getElementById("plr_word");
+                  
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
@@ -104,12 +109,16 @@
         el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
-            '<div class="letter'
+            '<span class="letter'
             + (isVowel(letters[i]) ? " vowel" : "")
             +'">'
             + letters[i]
-            +'</div>&nbsp;';
+            +'</span>&nbsp;';
         }
+      }
+      function setWord() {
+        var word = el_playerWord.value;
+        log(word);
       }
       function getRandomInt(max) {
         return Math.floor(Math.random() * max);
