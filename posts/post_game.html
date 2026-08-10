@@ -12,7 +12,7 @@
     <p class="blog-meta">2026-08-10</p>
     
     <div id='numplayers' style="font-size:36px">
-      Wie viele Spiler spielen jetzt?
+      Wie viele Spiler spielen jetzt?<br/>
       <input type="number" value="2" id="num_players">
       <button onclick="start()">Beginnen!</button>
     </div>
@@ -70,19 +70,15 @@
         givePlayer();
       }
       function givePlayer() {
-        try{
-          el_giveplayer.style.display = "block";
-        el_playerNum1.innerHtml = currentPlayer.toString();
-          log("...");
-        } catch(e) {
-          log("Error");
-          log(e);
-        }
+        el_giveplayer.style.display = "block";
+        el_playerNum1.innerHTML = currentPlayer.toString();
       }
       function askWord() {
         log("Ask word " + currentPlayer);
-        el_askword.style.display = "visible";
+        el_giveplayer.style.display = "none";
+        el_askword.style.display = "block";
         giveLetters();
+        log(letters.join(" "));
         log(string.join(" ", letters));
       }
       function getRandomInt(max) {
