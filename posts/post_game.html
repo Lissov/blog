@@ -54,10 +54,10 @@
       Wie viele Spieler spielen jetzt?<br/>
       <input type="number" value="3" style="width:120px" id="num_players">
       <button onclick="start()">Neues Spiel beginnen!</button>
-      <br/>
+      <br/><br/>
       <h3>Spiel laden:</h3>
       <span id="load_desc"></span><br/>
-      <button onclick="loadGame()">Laden</button>
+      <button id="btnLoad" onclick="loadGame()">Laden</button>
     </div>
     
     <div id="give_player" >
@@ -107,6 +107,7 @@
     <script>
       var el_log = document.getElementById("log");
       var el_load_desc = document.getElementById("load_desc");
+      var btn_load = document.getElementById("btnLoad");
       var el_numplayers = document.getElementById("numplayers");
       var inp_numplayers = document.getElementById("num_players");
       var el_askword = document.getElementById("askword");
@@ -157,7 +158,9 @@
         initLoad();
       }
       function initLoad() {
-        
+        var g = localStorage.getItem('game');
+        if (g) {
+        }
         //if (localStorage
       }
       function saveGame(stage) {
