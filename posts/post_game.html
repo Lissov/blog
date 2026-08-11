@@ -13,6 +13,9 @@
       font-size: 48px;
       margin-top: 4px;
     }
+    .text {
+      font-size: 48px;
+    }
     .letter {
       font-size: 64px;
       background-color: lightblue;
@@ -45,7 +48,7 @@
     <hr/><br/><br/>
     <div id="badge" class="badge error">Error</div>
     
-    <div id='numplayers' style="font-size:48px">
+    <div id='numplayers' class="text">
       Wie viele Spieler spielen jetzt?<br/>
       <input type="number" value="3" style="width:120px" id="num_players">
       <button onclick="start()">Beginnen!</button>
@@ -70,7 +73,7 @@
       <button onclick="setWord()">Das ist mein Wort</button>
     </div>
     
-    <div id="guess" >
+    <div id="guess" class="text">
       Wort von <span id="guess_pname"></span>:<br/>
       <div id="guess_letters" style="margin:auto"></div>
       <br/>
@@ -107,6 +110,7 @@
       var el_playerWord = document.getElementById("plr_word");
       var el_badge = document.getElementById("badge");
       var el_guess = document.getElementById("guess");
+      var el_guess_wname = document.getElementById("guess_pname");
             
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
@@ -131,7 +135,7 @@
         show(el_numplayers);
         hide(el_giveplayer);
         hide(el_askword);
-        //hide(el_guess);
+        hide(el_guess);
         hideBadge();
         
         inp_numplayers.value = numPlayers;
@@ -214,7 +218,12 @@
         showGuess();
       }
       function showGuess() {
+        el_guess_wname.value = players[wPlayer];
         show(el_guess);
+      }
+      function guess() {
+      }
+      function pass() {
       }
       function isVowel(ch) { return vowels.includes(ch); }
       function isValidWord(word, letters) {
