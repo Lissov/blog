@@ -114,7 +114,8 @@
       var el_guess_wname = document.getElementById("guess_pname");
       var el_guess_gname = document.getElementById("guess_gname");
       var el_guess_sticks = document.getElementById("guess_versCnt");
-
+      var el_guess_letters = document.getElementById("guess_letters");
+      
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
@@ -173,15 +174,6 @@
         el_playerWord.value = "";
         giveLetters();
         printLetters(el_letters, letters, 0, true);
-        /*el_letters.innerHTML = "";
-        for (var i=0; i<lettersPerPlayer;i++) {
-          el_letters.innerHTML +=
-            '<span class="letter'
-            + (isVowel(letters[i]) ? ' vowel' : '')
-            + '" onclick="el_playerWord.value+=\''+letters[i]+'\'">'
-            + letters[i]
-            + '</span>&nbsp;';
-        }*/
       }
       function printLetters(parent, letters, hidden, addOnClick) {
         parent.innerHTML = "";
@@ -237,6 +229,7 @@
         el_guess_wname.innerHTML = players[wPlayer];
         el_guess_gname.innerHTML = players[gPlayer];
         el_guess_sticks.innerHTML = sticks[gPlayer];
+        printLetters(el_guess_letters, words[wPlayer], hiddenLetters, false);
         show(el_guess);
         log("Showed guess page for word of " + players[wPlayer] + ", guessing " + players[gPlayer]);
       }
