@@ -111,12 +111,15 @@
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
+      var sticksPerPlayer = 5;
       
       var numPlayers = 3;
       var currentPlayer;
       var letters = [];
       var players = [];
       var words = [];
+      
+      var wPlayer, gPlayer, sticks, allPassed, hiddenLetters;
       
       var playersDefault = ["Leon", "Kati", "Pavlo", "Maryna"];
       function log(text) {
@@ -201,6 +204,13 @@
         }
       }
       function startRound() {
+        sticks = [];
+        for (var i=0; i<numPlayers; i++)
+          sticks.push(sticksPerPlayer);
+        wPlayer = 0;
+        gPlayer = 1;
+        allPassed = true;
+        hiddenLetters = word[wPlayer].length - 1;
         showGuess();
       }
       function showGuess() {
