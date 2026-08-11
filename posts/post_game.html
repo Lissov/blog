@@ -209,18 +209,19 @@
         }
       }
       function startRound() {
-        sticks = [];
+        /*sticks = [];
         for (var i=0; i<numPlayers; i++)
           sticks.push(sticksPerPlayer);
         wPlayer = 0;
         gPlayer = 1;
         allPassed = true;
-        hiddenLetters = word[wPlayer].length - 1;
+        hiddenLetters = words[wPlayer].length - 1;
+        */
         showGuess();
       }
       function showGuess() {
-        el_guess_wname.value = players[wPlayer];
-        el_guess_gname.value = players[gPlayer];
+        //el_guess_wname.value = players[wPlayer];
+        //el_guess_gname.value = players[gPlayer];
         show(el_guess);
       }
       function guess() {
