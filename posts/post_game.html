@@ -69,6 +69,20 @@
         oninput="this.value=this.value.toUpperCase()"><br/>
       <button onclick="setWord()">Das ist mein Wort</button>
     </div>
+    
+    <div id="guess" >
+      Wort von <span id="guess_pname"></span>:<br/>
+      <div id="guess_letters" style="margin:auto"></div>
+      <br/>
+      <span id="guess_gname"></span> versucht zu erraten.<br/>
+      Versuchen übrig: <span id="guess_versCnt"></span><br/>
+      Wort:<br/>
+      <input type="text" id="guess_word"
+        oninput="this.value=this.value.toUpperCase()"><br/>
+      <button onclick="guess()">Versuche zu erraten</button>
+      <button onclick="pass()">Pass und weiter</button>
+    </div>
+    
     <br/><br/>
     <hr/>
     <details>
