@@ -160,7 +160,8 @@
         
         //if (localStorage
       }
-      function saveGame() {
+      function saveGame(stage) {
+        game.stage = stage;
         localStorage.setItem('game', game);
       }
       function start() {
@@ -176,6 +177,7 @@
           game.words.push("");
         }
         game.current = 0;
+        game.stage = 0;
         log("Start with " + game.players.length + " players!");
         givePlayer();
       }
@@ -193,6 +195,7 @@
         el_playerWord.value = "";
         game.letters = giveLetters();
         printLetters(el_letters, game.letters, 0, true);
+        saveGame(1);
       }
       function printLetters(parent, letters, hidden, addOnClick) {
         parent.innerHTML = "";
@@ -217,7 +220,8 @@
         game.words[game.current] = word;
         if (game.current+1 < game.players.length) {
           game.current++;
-          saveGame();
+          game.stage =
+          saveGame(2);
           givePlayer();
         } else {
           log("Starting round!");
