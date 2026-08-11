@@ -164,9 +164,10 @@
       function initLoad() {
         try{
         el_load_desc.innerHTML = 'Laden...';
-        var g = localStorage.getItem('game');
-        log(g);
-        if (g) {
+        var gs = localStorage.getItem('game');
+        log(gs);
+        if (gs) {
+          vat g = JSON.parse(gs);
           var pl = "";
           for (var i=0; i<g.players.length; i++)
             pl += (pl ? " and " : "") + g.players[i] + " (" + g.scores[i] + ")";
@@ -183,7 +184,7 @@
       }
       function saveGame(stage) {
         game.stage = stage;
-        localStorage.setItem('game', game);
+        localStorage.setItem('game', JSON.strigify(game));
       }
       function start() {
         hide(el_numplayers);
