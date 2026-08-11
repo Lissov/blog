@@ -131,6 +131,7 @@
       var game = {
         players: [],
         words: [],
+        score: [],
         current: 0,
         guessing: 1,
         sticks: [],
@@ -160,8 +161,14 @@
       function initLoad() {
         var g = localStorage.getItem('game');
         if (g) {
+          var pl = "";
+          for (var i=0; i<players.length; i++)
+            pl += (pl ? " and " : "") + players[i] + " (" + scores[i] + ")";
+          el_load_desc.innerHTML = 'Spiel von ' + pl + '.';
+        } else {
+          el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
         }
-        //if (localStorage
+        btn_load.disabled = !g;
       }
       function saveGame(stage) {
         game.stage = stage;
