@@ -127,14 +127,16 @@
       var lettersPerPlayer = 8;
       var sticksPerPlayer = 5;
       
-      var numPlayers = 3;
-      var currentPlayer;
-      var letters = [];
-      var players = [];
-      var words = [];
-      
-      var wPlayer, gPlayer, sticks, allPassed, hiddenLetters;
-      
+      var game = {
+        players: [],
+        words: [],
+        current: 0,
+        guessing: 1,
+        sticks: [],
+        allPassed: true,
+        hiddenLetters:0
+      };
+
       var playersDefault = ["Leon", "Kati", "Pavlo", "Maryna"];
       function log(text) {
         el_log.innerHTML += text + "<br/>";
@@ -148,7 +150,7 @@
         hide(el_guess);
         hideBadge();
         
-        inp_numplayers.value = numPlayers;
+        inp_numplayers.value = 3;
         
         initLoad();
       }
@@ -156,31 +158,33 @@
         
         //if (localStorage
       }
+      function saveGame() {
+      }
       function start() {
         hide(el_numplayers);
-        numPlayers = +(inp_numplayers.value);
-        players = [];
-        words=[];
+        var numPlayers = +(inp_numplayers.value);
+        game.players = [];
+        game.words=[];
         for (var i=0; i<=numPlayers; i++) {
-          players.push(i < playersDefault.length
+          game.players.push(i < playersDefault.length
             ? playersDefault[i]
             : "Spieler " + (i + 1).toString()
           );
-          words.push("");
+          game.words.push("");
         }
-        currentPlayer = 0;
-        log("Start with " + numPlayers + " players!");
+        game.current = 0;
+        log("Start with " + game.players.length + " players!");
         givePlayer();
       }
       function givePlayer() {
         show(el_giveplayer);
-        el_playerNum1.innerHTML = (currentPlayer + 1).toString();
-        el_playerName.value = players[currentPlayer];
+        el_playerNum1.innerHTML = (game.current + 1).toString();
+        el_playerName.value = game.players[game.current];
       }
       function askWord() {
-        players[currentPlayer] = el_playerName.value;
+        game.players[game.current] = el_playerName.value;
 
-        log("Ask word " + currentPlayer + " > " + players[currentPlayer]);
+        log("Ask word " + game.current + " > " + game.players[game.current]);
         hide(el_giveplayer);
         show(el_askword);
         el_playerWord.value = "";
@@ -200,18 +204,17 @@
         }
       }
       function setWord() {
-        var word = el_playerWord
-        
-        .value.trim();
+        var word = el_playerWord.value.trim();
         if (!isValidWord(word, letters)) {
           badgeError("Wort [" + word + "] ist nicht korrekt mit deiner Buchstaben. Versuche noch Mal.");
           return;
         }
         hideBadge();
         hide(el_askword);
-        words[currentPlayer] = word;
-        if (currentPlayer+1 < numPlayers) {
-          currentPlayer++;
+        game.words[game.current] = word;
+        if (game.current+1 < game.players.length) {
+          game.current++;
+          saveGame();
           givePlayer();
         } else {
           log("Starting round!");
