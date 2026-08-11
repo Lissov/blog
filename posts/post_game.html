@@ -134,7 +134,9 @@
         guessing: 1,
         sticks: [],
         allPassed: true,
-        hiddenLetters:0
+        hiddenLetters: 0,
+        letters: [],
+        stage: 0
       };
 
       var playersDefault = ["Leon", "Kati", "Pavlo", "Maryna"];
@@ -159,6 +161,7 @@
         //if (localStorage
       }
       function saveGame() {
+        localStorage.setItem('game', game);
       }
       function start() {
         hide(el_numplayers);
@@ -188,8 +191,8 @@
         hide(el_giveplayer);
         show(el_askword);
         el_playerWord.value = "";
-        giveLetters();
-        printLetters(el_letters, letters, 0, true);
+        game.letters = giveLetters();
+        printLetters(el_letters, game.letters, 0, true);
       }
       function printLetters(parent, letters, hidden, addOnClick) {
         parent.innerHTML = "";
@@ -225,10 +228,11 @@
         return Math.floor(Math.random() * max);
       }
       function giveLetters() {
-        letters = [];
+        var letters = [];
         for (var i=1; i<=lettersPerPlayer; i++) {
           letters.push(alphabet[getRandomInt(alphabet.length)]);
         }
+        return letters;
       }
       function startRound() {
         sticks = [];
