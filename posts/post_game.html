@@ -159,7 +159,8 @@
         initLoad();
       }
       function initLoad() {
-        el_load_desc.innerHTML = 'Loading...';
+        try{
+        el_load_desc.innerHTML = 'Laden...';
         var g = localStorage.getItem('game');
         if (g) {
           var pl = "";
@@ -170,6 +171,9 @@
           el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
         }
         btn_load.disabled = !g;
+        }catch(e){
+          log(e);
+        }
       }
       function saveGame(stage) {
         game.stage = stage;
