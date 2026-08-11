@@ -151,8 +151,9 @@
           el_letters.innerHTML +=
             '<span class="letter'
             + (isVowel(letters[i]) ? ' vowel' : '')
-            //+'" onclick="el_playerWord.value+="'+letters[i]+'">'
-            + '" onclick="alert(\'aaa\')">'
+            + '" onclick="el_playerWord.value+=\''+letters[i]+'\'">'
+            //+ '" onclick="el_playerWord.value+="'+letters[i]+'">'
+            //+ '" onclick="alert(\'aaa\')">'
             //+ '">'
             + letters[i]
             + '</span>&nbsp;';
