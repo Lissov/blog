@@ -39,6 +39,7 @@
       border-color: red;
       color: red;
     }
+    .me-2 { margin-right: 16px; }
   </style>
 </head>
 <body class="blog">
@@ -82,8 +83,8 @@
       Wort:<br/>
       <input type="text" id="guess_word"
         oninput="this.value=this.value.toUpperCase()"><br/>
-      <button onclick="guess()">Versuche zu erraten</button>
-      <button onclick="pass()">Pass und weiter</button>
+      <button onclick="guess()" class="me-2">Erraten</button>
+      <button onclick="pass()">Pass</button>
     </div>
     
     <br/><br/>
@@ -180,6 +181,8 @@
             + letters[i]
             + '</span>&nbsp;';
         }
+      }
+      function printLetters(parent, word, hidden, onClick) {
       }
       function setWord() {
         var word = el_playerWord
