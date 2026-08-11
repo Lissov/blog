@@ -220,7 +220,6 @@
         game.words[game.current] = word;
         if (game.current+1 < game.players.length) {
           game.current++;
-          game.stage =
           saveGame(2);
           givePlayer();
         } else {
@@ -239,22 +238,23 @@
         return letters;
       }
       function startRound() {
-        sticks = [];
-        for (var i=0; i<numPlayers; i++)
-          sticks.push(sticksPerPlayer);
-        wPlayer = 0;
-        gPlayer = 1;
-        allPassed = true;
-        hiddenLetters = words[wPlayer].length - 1;
+        game.sticks = [];
+        for (var i=0; i<game.players.length; i++)
+          game.sticks.push(sticksPerPlayer);
+        game.current = 0;
+        game.guessing = 1;
+        game.allPassed = true;
+        game.hiddenLetters = game.words[game.current].length - 1;
+        saveGame(3);
         showGuess();
       }
       function showGuess() {
-        el_guess_wname.innerHTML = players[wPlayer];
-        el_guess_gname.innerHTML = players[gPlayer];
-        el_guess_sticks.innerHTML = sticks[gPlayer];
-        printLetters(el_guess_letters, words[wPlayer], hiddenLetters, false);
+        el_guess_wname.innerHTML = game.players[game.current];
+        el_guess_gname.innerHTML = game.players[game.guessing];
+        el_guess_sticks.innerHTML = game.sticks[game.guessing];
+        printLetters(el_guess_letters, game.words[game.current], game.hiddenLetters, false);
         show(el_guess);
-        log("Showed guess page for word of " + players[wPlayer] + ", guessing " + players[gPlayer]);
+        log("Showed guess page for word of " + game.players[game.current] + ", guessing " + game.players[game.guessing]);
       }
       function guess() {
       }
