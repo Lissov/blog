@@ -172,7 +172,8 @@
         show(el_askword);
         el_playerWord.value = "";
         giveLetters();
-        el_letters.innerHTML = "";
+        printLetters(el_letters, letters, 0, '');
+        /*el_letters.innerHTML = "";
         for (var i=0; i<lettersPerPlayer;i++) {
           el_letters.innerHTML +=
             '<span class="letter'
@@ -180,9 +181,19 @@
             + '" onclick="el_playerWord.value+=\''+letters[i]+'\'">'
             + letters[i]
             + '</span>&nbsp;';
-        }
+        }*/
       }
-      function printLetters(parent, word, hidden, onClick) {
+      function printLetters(parent, letters, hidden, onClick) {
+        parent.innerHTML = "";
+        for (var i=0; i<letters.length; i++) {
+          var ltr = i<hidden ? '?' : letters[i];
+          parent.innerHTML +=
+            '<span class="letter'
+            + (isVowel(letters[i]) ? ' vowel" ' : '" ')
+            + onClick
+            + '>' + ltr
+            + '</span>&nbsp;';
+        }
       }
       function setWord() {
         var word = el_playerWord
