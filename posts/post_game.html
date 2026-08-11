@@ -111,7 +111,8 @@
       var el_badge = document.getElementById("badge");
       var el_guess = document.getElementById("guess");
       var el_guess_wname = document.getElementById("guess_pname");
-            
+      var el_guess_gname = document.getElementById("guess_gname");
+
       var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
@@ -219,6 +220,7 @@
       }
       function showGuess() {
         el_guess_wname.value = players[wPlayer];
+        el_guess_gname.value = players[gPlayer];
         show(el_guess);
       }
       function guess() {
