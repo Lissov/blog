@@ -164,8 +164,8 @@
         var g = localStorage.getItem('game');
         if (g) {
           var pl = "";
-          for (var i=0; i<players.length; i++)
-            pl += (pl ? " and " : "") + players[i] + " (" + scores[i] + ")";
+          for (var i=0; i<g.players.length; i++)
+            pl += (pl ? " and " : "") + g.players[i] + " (" + g.scores[i] + ")";
           el_load_desc.innerHTML = 'Spiel von ' + pl + '.';
         } else {
           el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
