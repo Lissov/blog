@@ -74,10 +74,10 @@
     </div>
     
     <div id="guess" class="text">
-      Wort von <span id="guess_pname"></span>:<br/>
+      Wort von <b><span id="guess_pname"></span></b>:<br/>
       <div id="guess_letters" style="margin:auto"></div>
       <br/>
-      <span id="guess_gname"></span> versucht zu erraten.<br/>
+      <b><span id="guess_gname"></span></b> versucht zu erraten.<br/>
       Versuchen übrig: <span id="guess_versCnt"></span><br/>
       Wort:<br/>
       <input type="text" id="guess_word"
@@ -209,19 +209,18 @@
         }
       }
       function startRound() {
-        /*sticks = [];
+        sticks = [];
         for (var i=0; i<numPlayers; i++)
           sticks.push(sticksPerPlayer);
         wPlayer = 0;
         gPlayer = 1;
         allPassed = true;
         hiddenLetters = words[wPlayer].length - 1;
-        */
         showGuess();
       }
       function showGuess() {
-        //el_guess_wname.value = players[wPlayer];
-        //el_guess_gname.value = players[gPlayer];
+        el_guess_wname.value = players[wPlayer];
+        el_guess_gname.value = players[gPlayer];
         show(el_guess);
         log("Showed guess page for word of " + players[wPlayer] + ", guessing " + players[gPlayer]);
       }
