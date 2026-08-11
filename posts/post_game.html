@@ -50,9 +50,10 @@
     <div id="badge" class="badge error">Error</div>
     
     <div id='numplayers' class="text">
+      <h3>Neues spiel:</h3>
       Wie viele Spieler spielen jetzt?<br/>
       <input type="number" value="3" style="width:120px" id="num_players">
-      <button onclick="start()">Beginnen!</button>
+      <button onclick="start()">Neues Spiel beginnen!</button>
     </div>
     
     <div id="give_player" >
@@ -143,6 +144,8 @@
         hideBadge();
         
         inp_numplayers.value = numPlayers;
+        
+        
       }
       function start() {
         hide(el_numplayers);
