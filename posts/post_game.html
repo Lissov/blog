@@ -16,9 +16,8 @@
       font-size: 48px;
       margin-top: 4px;
     }
-    .text {
-      font-size: 48px;
-    }
+    .text { font-size: 48px; }
+    .text-sm { font-size: 28 px; }
     .letter {
       font-size: 64px;
       background-color: lightblue;
@@ -59,7 +58,7 @@
       <button onclick="start()">Neues Spiel beginnen!</button>
       <br/><br/>
       <h3>Spiel laden:</h3>
-      <span id="load_desc"></span><br/>
+      <span id="load_desc" class="text-sm"></span><br/>
       <button id="btnLoad" onclick="loadGame()">Laden</button>
     </div>
     
@@ -181,6 +180,8 @@
         }
         btn_load.disabled = !g;
         }catch(e){
+          el_load_desc.innerHTML = 'Fehler während laden von vorheriger Spiel.';
+          btn_load.disabled = true;
           log(e);
         }
       }
