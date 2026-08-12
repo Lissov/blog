@@ -189,7 +189,7 @@
       }
       function saveGame() {
         try{
-          localStorage.setItem('game', JSON.strigify(game));
+          localStorage.setItem('game', JSON.stringify(game));
         } catch(e){
           log(e);
         }
@@ -207,7 +207,6 @@
         goToStage(0, true);
       }
       function goToStage(stage, noSave) {
-        log("To stage " + stage);
         game.stage = stage;
         if (!noSave) {
           saveGame();
