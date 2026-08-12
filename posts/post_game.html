@@ -129,6 +129,14 @@
       </div>
     </div>
     
+    <hr/>
+    <div id="score">
+      <table class="score">
+        <tr id="score_head"></tr>
+        <tr id="score_body"></tr>
+      </table>
+    </div>
+    
     <br/><br/>
     <hr/>
     <details>
@@ -169,6 +177,9 @@
       var el_guess_none = document.getElementById("guess_none");
       var el_word_of2 = document.getElementById("word_of2");
       var el_word_of_points2 = document.getElementById("word_of_points2");
+      var el_score = document.getElementById("score");
+      var el_score_head = document.getElementById("score_head");
+      var el_score_body = document.getElementById("score_body");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
@@ -203,6 +214,7 @@
         hide(el_giveplayer);
         hide(el_askword);
         hide(el_guess);
+        hide(el_score);
         hideBadge();
         
         inp_numplayers.value = 3;
@@ -269,6 +281,8 @@
         hide(el_guess_none);
         hideBadge();
         
+        showScore();
+        
         switch (stage) {
           case 0:
             startNextRound();
@@ -301,6 +315,16 @@
         } catch(e){
           log(e);
         }
+      }
+      
+      function showScore() {
+        el_score_head.innerHTML = "";
+        el_score_body.innerHTML = "";
+        for (var i=0; i<game.players.length; i++) {
+          el_score_head.innerHTML += "<th>" + game.players[i] + "</th>";
+          el_score_body.innerHTML += "<td>" + game.scores[i] + "</td>";
+        }
+        show(el_score);
       }
       function startNextRound() {
         game.roundStarter = (game.roundStarter+1) % game.players.length;
