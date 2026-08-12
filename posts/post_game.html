@@ -126,7 +126,10 @@
       var el_guess_sticks = document.getElementById("guess_versCnt");
       var el_guess_letters = document.getElementById("guess_letters");
       
-      var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
+      var freque = "6224992347123492311787711111111";
+      var alphabet = "";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
       var sticksPerPlayer = 5;
@@ -141,7 +144,13 @@
         allPassed: true,
         hiddenLetters: 0,
         letters: [],
-        stage: 0
+        alphabet: "",
+        roundStarter: 0,
+        // 0 - start, pre-round
+        // 1 - letters displayed 
+        // 2 - player set word, ask next player
+        // 3 - playing round
+        stage: 0 
       };
 
       var playersDefault = ["Leon", "Kati", "Pavlo", "Maryna"];
@@ -190,23 +199,39 @@
         hide(el_numplayers);
         var numPlayers = +(inp_numplayers.value);
         game.players = [];
-        game.words=[];
         for (var i=0; i<=numPlayers; i++) {
-          game.players.push(i < playersDefault.length
-            ? playersDefault[i]
-            : "Spieler " + (i + 1).toString()
-          );
-          game.words.push("");
+          game.players.push("");
         }
-        game.current = 0;
+        
         game.stage = 0;
         log("Start with " + game.players.length + " players!");
+        game.roundStarter = -1;
+        startNextRound();
+      }
+      function startNextRound() {
+        game.roundStarter = (game.roundStarter+1) % game.players.length;
+        game.current = game.roundStarter;
+        game.words=[];
+        for (var i=0; i<=numPlayers; i++) {
+          game.words.push("");
+        }
+        game.alphabet = "";
+        for (var i=0; i<alphas.length;i++)
+          for (var j=0; j<+freque[i]; j++)
+            game.alphabet += alphas[i];
         givePlayer();
       }
       function givePlayer() {
         show(el_giveplayer);
         el_playerNum1.innerHTML = (game.current + 1).toString();
-        el_playerName.value = game.players[game.current];
+        var pln = game.players[game.current];
+        el_playerName.disabled = pln != "";
+        el_playerName.value = pln != ""
+          ? pln
+          : game.current < playersDefault.length
+            ? playersDefault[game.current]
+            : "Spieler " + (game.current + 1).toString()
+          );
       }
       function askWord() {
         game.players[game.current] = el_playerName.value;
@@ -231,6 +256,7 @@
             + '</span>&nbsp;';
         }
       }
+      
       function setWord() {
         var word = el_playerWord.value.trim();
         if (!isValidWord(word, letters)) {
@@ -240,8 +266,8 @@
         hideBadge();
         hide(el_askword);
         game.words[game.current] = word;
-        if (game.current+1 < game.players.length) {
-          game.current++;
+        game.current = (game.current + 1) % game.players.length;
+        if (game.current != game.roundStarter) {
           saveGame(2);
           givePlayer();
         } else {
@@ -255,7 +281,10 @@
       function giveLetters() {
         var letters = [];
         for (var i=1; i<=lettersPerPlayer; i++) {
-          letters.push(alphabet[getRandomInt(alphabet.length)]);
+          var a = game.alphabet;
+          var index = getRandomInt(a.length);
+          letters.push(a[index]);
+          game.alphabet = a.slice(0, index) + a.slice(index+1);
         }
         return letters;
       }
@@ -263,8 +292,8 @@
         game.sticks = [];
         for (var i=0; i<game.players.length; i++)
           game.sticks.push(sticksPerPlayer);
-        game.current = 0;
-        game.guessing = 1;
+        game.current = game.roundStarter;
+        game.guessing = (game.current +1)%game.players.length;
         game.allPassed = true;
         game.hiddenLetters = game.words[game.current].length - 1;
         saveGame(3);
