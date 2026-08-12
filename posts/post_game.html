@@ -88,11 +88,18 @@
       <br/>
       <b><span id="guess_gname"></span></b> versucht zu erraten.<br/>
       Versuchen übrig: <span id="guess_versCnt"></span><br/>
-      Wort:<br/>
-      <input type="text" id="guess_word"
-        oninput="this.value=this.value.toUpperCase()"><br/>
-      <button onclick="guess()" class="me-2">Erraten</button>
-      <button onclick="pass()">Pass</button>
+      <div id="guess_try">
+        Wort:<br/>
+        <input type="text" id="guess_word"
+          oninput="this.value=this.value.toUpperCase()"><br/>
+        <button onclick="guess()" class="me-2">Erraten</button>
+        <button onclick="pass()">Pass</button>
+      </div>
+      <div id="guess_wrong">
+        Das ist <b>nicht</b> das richtige Wort.
+        Jetzt darf der nächste Versuchen.
+        <button onclick="pass()">Nächste spieler</button>
+      </div>
     </div>
     
     <br/><br/>
@@ -126,6 +133,8 @@
       var el_guess_sticks = document.getElementById("guess_versCnt");
       var el_guess_letters = document.getElementById("guess_letters");
       var el_guess_word = document.getElementById("guess_word");
+      var el_guess_try = document.getElementById("guess_try");
+      var el_guess_wrong = document.getElementById("guess_wrong");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
@@ -220,6 +229,8 @@
         hide(el_giveplayer);
         hide(el_askword);
         hide(el_guess);
+        hide(el_guess_try);
+        hide(el_guess_wrong);
         hideBadge();
         
         switch (stage) {
@@ -337,13 +348,17 @@
         goToStage(4);
       }
       function showGuess() {
+        showGuessInfo();
+        el_guess_word.value = "";
+        show(el_guess_try);
+        log("Showed guess page for word of " + game.players[game.current] + ", guessing " + game.players[game.guessing]);
+      }
+      function showGuessInfo() {
         el_guess_wname.innerHTML = game.players[game.current];
         el_guess_gname.innerHTML = game.players[game.guessing];
         el_guess_sticks.innerHTML = game.sticks[game.guessing];
-        el_guess_word.value = "";
         printLetters(el_guess_letters, game.words[game.current], game.hiddenLetters, false);
         show(el_guess);
-        log("Showed guess page for word of " + game.players[game.current] + ", guessing " + game.players[game.guessing]);
       }
       function guess() {
         hideBadge();
@@ -394,6 +409,11 @@
         } else {
           goToStage(12);
         }
+      }
+      
+      function showWrong() {
+        showGuessInfo();
+        show(el_guess_wrong);
       }
 
       function isVowel(ch) { return vowels.includes(ch); }
