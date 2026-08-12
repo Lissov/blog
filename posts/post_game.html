@@ -188,7 +188,11 @@
       function loadGame() {
       }
       function saveGame() {
-        localStorage.setItem('game', JSON.strigify(game));
+        try{
+          localStorage.setItem('game', JSON.strigify(game));
+        } catch(e){
+          log(e);
+        }
       }
       function start() {
         hide(el_numplayers);
