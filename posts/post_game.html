@@ -289,8 +289,9 @@
       }
       
       function setWord() {
+        log("Setting word of " + game.current);
         var word = el_playerWord.value.trim();
-        if (!isValidWord(word, letters)) {
+        if (!isValidWord(word, game.letters)) {
           badgeError("Wort [" + word + "] ist nicht korrekt mit deiner Buchstaben. Versuche noch Mal.");
           return;
         }
