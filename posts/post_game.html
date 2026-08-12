@@ -203,6 +203,7 @@
         goToStage(0, true);
       }
       function goToStage(stage, noSave) {
+        log("To stage " + stage);
         game.stage = stage;
         if (!noSave) {
           saveGame();
