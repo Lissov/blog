@@ -450,7 +450,7 @@
       }
       function nextWord() {
         game.current = (game.current + 1) % game.players.length;
-        if (game.current = game.roundStarter) {
+        if (game.current == game.roundStarter) {
         } else {
           startGuessing();
         }
