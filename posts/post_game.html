@@ -194,7 +194,7 @@
         hide(el_numplayers);
         var numPlayers = +(inp_numplayers.value);
         game.players = [];
-        for (var i=0; i<=numPlayers; i++) {
+        for (var i=0; i<numPlayers; i++) {
           game.players.push("");
         }
         
@@ -229,12 +229,14 @@
         }
       }
       function startNextRound() {
+        log("a");
         game.roundStarter = (game.roundStarter+1) % game.players.length;
         game.current = game.roundStarter;
         game.words=[];
-        for (var i=0; i<=numPlayers; i++) {
+        for (var i=0; i<numPlayers; i++) {
           game.words.push("");
         }
+        log("herr");
         game.alphabet = "";
         for (var i=0; i<alphas.length;i++)
           for (var j=0; j<(+freque[i]); j++)
