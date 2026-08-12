@@ -188,11 +188,7 @@
       function loadGame() {
       }
       function saveGame() {
-        try{
-          localStorage.setItem('game', JSON.stringify(game));
-        } catch(e){
-          log(e);
-        }
+        localStorage.setItem('game', JSON.stringify(game));
       }
       function start() {
         hide(el_numplayers);
@@ -207,6 +203,7 @@
         goToStage(0, true);
       }
       function goToStage(stage, noSave) {
+        try{
         game.stage = stage;
         if (!noSave) {
           saveGame();
@@ -233,6 +230,9 @@
           default:
             badgeError("No stage handler: " + stage);
             break;
+        }
+        } catch(e){
+          log(e);
         }
       }
       function startNextRound() {
