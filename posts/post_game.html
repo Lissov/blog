@@ -115,8 +115,8 @@
       <div id="guess_success">
         <div class="badge success">
           Du hast <b>richtig</b> erraten.</br>
-          Du bekommst <span id="guessed_points"></span> bekommen.<br/>
-          <span id="word_of"></span> bekommt <span id="word_of_points"></span> points.
+          Du bekommst <span id="guessed_points"></span> Punkten.<br/>
+          <span id="word_of"></span> bekommt <span id="word_of_points"></span> Punkten.
         </div>
           <button onclick="nextWord()">Weiter</button>
       </div>
@@ -156,6 +156,9 @@
       var el_guess_try = document.getElementById("guess_try");
       var el_guess_wrong = document.getElementById("guess_wrong");
       var el_guess_success = document.getElementById("guess_success");
+      var el_guessed_points = document.getElementById("guessed_points");
+      var el_word_of = document.getElementById("word_of");
+      var el_word_of_points = document.getElementById("word_of_points");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
@@ -453,6 +456,9 @@
         game.scores[game.current] += auth;
         game.hiddenLetters = 0;
         showGuessInfo();
+        el_guessed_points.innerHTML = your;
+        el_word_of.innerHTML = game.players[game.current];
+        el_word_of_points.innerHTML = auth;
         show(el_guess_success);
       }
 
