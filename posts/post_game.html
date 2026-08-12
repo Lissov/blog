@@ -196,6 +196,7 @@
         game.players = [];
         for (var i=0; i<numPlayers; i++) {
           game.players.push("");
+          game.scores.push(0);
         }
         
         log("Start with " + game.players.length + " players!");
@@ -293,6 +294,7 @@
         hide(el_askword);
         game.words[game.current] = word;
         game.current = (game.current + 1) % game.players.length;
+        log("Switch to " + game.current);
         if (game.current != game.roundStarter) {
           goToStage(1);
         } else {
