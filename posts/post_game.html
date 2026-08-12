@@ -127,8 +127,8 @@
       var el_guess_letters = document.getElementById("guess_letters");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
-      var freque = "6224992347123492311787711111111";
+      var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZ";
+      var freque = "6224992347123492311787711111";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
       var sticksPerPlayer = 5;
@@ -171,7 +171,7 @@
       }
       function initLoad() {
         try{
-        el_load_desc.innerHTML = 'Laden...';
+        /*el_load_desc.innerHTML = 'Laden...';
         var gs = localStorage.getItem('game');
         log(gs);
         if (gs) {
@@ -183,7 +183,7 @@
         } else {
           el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
         }
-        btn_load.disabled = !g;
+        btn_load.disabled = !g;*/
         }catch(e){
           log(e);
         }
