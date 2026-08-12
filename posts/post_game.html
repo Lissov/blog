@@ -217,7 +217,7 @@
         }
         game.alphabet = "";
         for (var i=0; i<alphas.length;i++)
-          for (var j=0; j<+freque[i]; j++)
+          for (var j=0; j<(+freque[i]); j++)
             game.alphabet += alphas[i];
         givePlayer();
       }
@@ -228,10 +228,9 @@
         el_playerName.disabled = pln != "";
         el_playerName.value = pln != ""
           ? pln
-          : game.current < playersDefault.length
+          : (game.current < playersDefault.length)
             ? playersDefault[game.current]
-            : "Spieler " + (game.current + 1).toString()
-          );
+            : ("Spieler " + (game.current + 1).toString());
       }
       function askWord() {
         game.players[game.current] = el_playerName.value;
