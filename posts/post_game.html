@@ -48,7 +48,7 @@
 <body class="blog">
   <article>
     <h1>Wortspiel mit HTML + JS</h1>
-    <p class="blog-meta">2026-08-12</p>
+    <p class="blog-meta">2026-08-11</p>
     <hr/><br/><br/>
     <div id="badge" class="badge error">Error</div>
     
@@ -167,19 +167,19 @@
       }
       function initLoad() {
         try{
-        /*el_load_desc.innerHTML = 'Laden...';
+        el_load_desc.innerHTML = 'Laden...';
         var gs = localStorage.getItem('game');
         log(gs);
         if (gs) {
           vat g = JSON.parse(gs);
           var pl = "";
           for (var i=0; i<g.players.length; i++)
-            pl += (pl ? " and " : "") + g.players[i] + " (" + g.scores[i] + ")";
+            pl += (!!pl ? " and " : "") + g.players[i] + " (" + g.scores[i] + ")";
           el_load_desc.innerHTML = 'Spiel von ' + pl + '.';
         } else {
           el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
         }
-        btn_load.disabled = !g;*/
+        btn_load.disabled = !g;
         }catch(e){
           log(e);
         }
