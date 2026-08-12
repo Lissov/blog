@@ -517,9 +517,9 @@
         game.scores[game.current] += auth;
         game.hiddenLetters = 0;
         showGuessInfo();
-        el_guessed_points.innerHTML = your.toString() + (your == 1 ? " Punkt" : " Punkten");
+        el_guessed_points.innerHTML = your.toString() + (your == 1 ? " Punkt" : " Punkte");
         el_word_of.innerHTML = game.players[game.current];
-        el_word_of_points.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkten");
+        el_word_of_points.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkte");
         show(el_guess_success);
       }
       function showNotGuessed() {
@@ -527,7 +527,7 @@
         game.scores[game.current] += auth;
         showGuessInfo();
         el_word_of2.innerHTML = game.players[game.current];
-        el_word_of_points2.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkten");
+        el_word_of_points2.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkte");
         show(el_guess_none);
       }
 
