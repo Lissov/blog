@@ -229,11 +229,10 @@
         }
       }
       function startNextRound() {
-        log("a");
         game.roundStarter = (game.roundStarter+1) % game.players.length;
         game.current = game.roundStarter;
         game.words=[];
-        for (var i=0; i<numPlayers; i++) {
+        for (var i=0; i<game.players.length; i++) {
           game.words.push("");
         }
         log("herr");
