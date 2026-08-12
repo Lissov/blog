@@ -17,7 +17,7 @@
       margin-top: 4px;
     }
     .text { font-size: 48px; }
-    .text-sm { font-size: 28 px; }
+    .text-sm { font-size: 28px; }
     .letter {
       font-size: 64px;
       background-color: lightblue;
@@ -207,16 +207,27 @@
         if (save) {
           saveGame();
         }
+        
+        hide(el_numplayers);
+        hide(el_giveplayer);
+        hide(el_askword);
+        
         switch (stage) {
           case 0:
             startNextRound();
+            break;
+          case 1:
+            givePlayer();
+            break;
+          case 2:
+            showMakeWord();
             break;
           default:
             badgeError("No stage handler: " + stage);
             break;
         }
       }
-      /*function startNextRound() {
+      function startNextRound() {
         game.roundStarter = (game.roundStarter+1) % game.players.length;
         game.current = game.roundStarter;
         game.words=[];
@@ -227,7 +238,7 @@
         for (var i=0; i<alphas.length;i++)
           for (var j=0; j<(+freque[i]); j++)
             game.alphabet += alphas[i];
-        givePlayer();
+        goToStage(1);
       }
       function givePlayer() {
         show(el_giveplayer);
@@ -242,14 +253,14 @@
       }
       function askWord() {
         game.players[game.current] = el_playerName.value;
-
-        log("Ask word " + game.current + " > " + game.players[game.current]);
-        hide(el_giveplayer);
-        show(el_askword);
-        el_playerWord.value = "";
         game.letters = giveLetters();
+        goToStage(2);
+      }
+      function showMakeWord() {
+        log("Ask word " + game.current + " > " + game.players[game.current]);
+        el_playerWord.value = "";
         printLetters(el_letters, game.letters, 0, true);
-        saveGame(1);
+        show(el_askword);
       }
       function printLetters(parent, letters, hidden, addOnClick) {
         parent.innerHTML = "";
@@ -264,7 +275,7 @@
         }
       }
       
-      function setWord() {
+      /*function setWord() {
         var word = el_playerWord.value.trim();
         if (!isValidWord(word, letters)) {
           badgeError("Wort [" + word + "] ist nicht korrekt mit deiner Buchstaben. Versuche noch Mal.");
