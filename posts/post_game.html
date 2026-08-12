@@ -124,6 +124,7 @@
       var el_guess_gname = document.getElementById("guess_gname");
       var el_guess_sticks = document.getElementById("guess_versCnt");
       var el_guess_letters = document.getElementById("guess_letters");
+      var el_guess_word = document.getElementById("guess_word");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
@@ -338,11 +339,20 @@
         el_guess_wname.innerHTML = game.players[game.current];
         el_guess_gname.innerHTML = game.players[game.guessing];
         el_guess_sticks.innerHTML = game.sticks[game.guessing];
+        el_guess_word.value = "";
         printLetters(el_guess_letters, game.words[game.current], game.hiddenLetters, false);
         show(el_guess);
         log("Showed guess page for word of " + game.players[game.current] + ", guessing " + game.players[game.guessing]);
       }
       function guess() {
+        hideBadge();
+        var word = el_guess_word.value.trim();
+        var pw = game.words[game.current];
+        if (word.length != pw.length) {
+          badgeError("Dein Wort hat andere Zahl der Buchstaben. Sei achtsam und versuche noch mal");
+          return;
+        }
+        
       }
       function pass() {
       }
