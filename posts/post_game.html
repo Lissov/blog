@@ -42,6 +42,11 @@
       border-color: red;
       color: red;
     }
+    .warning {
+      background-color: #ffffee;
+      border-color: orange;
+      color: orange;
+    }
     .me-2 { margin-right: 16px; }
   </style>
 </head>
@@ -95,7 +100,7 @@
         <button onclick="guess()" class="me-2">Erraten</button>
         <button onclick="pass()">Pass</button>
       </div>
-      <div id="guess_wrong">
+      <div id="guess_wrong" class="badge warning">
         Das ist <b>nicht</b> das richtige Wort.
         Jetzt darf der nächste Versuchen.
         <button onclick="pass()">Nächste spieler</button>
