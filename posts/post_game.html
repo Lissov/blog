@@ -115,10 +115,10 @@
       <div id="guess_success">
         <div class="badge success">
           Du hast <b>richtig</b> erraten.</br>
-          Du bekommst <span id="guessed_points"></span> Punkten.<br/>
-          <span id="word_of"></span> bekommt <span id="word_of_points"></span> Punkten.
+          Du bekommst <span id="guessed_points"></span>.<br/>
+          <span id="word_of"></span> bekommt <span id="word_of_points"></span>.
         </div>
-          <button onclick="nextWord()">Weiter</button>
+        <button onclick="nextWord()">Weiter</button>
       </div>
     </div>
     
@@ -456,9 +456,9 @@
         game.scores[game.current] += auth;
         game.hiddenLetters = 0;
         showGuessInfo();
-        el_guessed_points.innerHTML = your;
+        el_guessed_points.innerHTML = your.toString() + (your == 1 ? "Punkt" : "Punkten");
         el_word_of.innerHTML = game.players[game.current];
-        el_word_of_points.innerHTML = auth;
+        el_word_of_points.innerHTML = auth.toString() + (auth == 1 ? "Punkt" : "Punkten");
         show(el_guess_success);
       }
 
