@@ -120,6 +120,13 @@
         </div>
         <button onclick="nextWord()">Weiter</button>
       </div>
+      <div id="guess_none">
+        <div class="badge success">
+          Niemand könnte das Wort erraten.</br>
+          <span id="word_of2"></span> bekommt <span id="word_of_points2"></span>.
+        </div>
+        <button onclick="nextWord()">Weiter</button>
+      </div>
     </div>
     
     <br/><br/>
@@ -159,6 +166,9 @@
       var el_guessed_points = document.getElementById("guessed_points");
       var el_word_of = document.getElementById("word_of");
       var el_word_of_points = document.getElementById("word_of_points");
+      var el_guess_none = document.getElementById("guess_none");
+      var el_word_of2 = document.getElementById("word_of2");
+      var el_word_of_points2 = document.getElementById("word_of_points2");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
@@ -256,6 +266,7 @@
         hide(el_guess_try);
         hide(el_guess_wrong);
         hide(el_guess_success);
+        hide(el_guess_none);
         hideBadge();
         
         switch (stage) {
@@ -279,6 +290,9 @@
             break;
           case 11:
             showWrong();
+            break;
+          case 12:
+            showNotGuessed();
             break;
           default:
             badgeError("No stage handler: " + stage);
@@ -474,6 +488,14 @@
         el_word_of.innerHTML = game.players[game.current];
         el_word_of_points.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkten");
         show(el_guess_success);
+      }
+      function showNotGuessed() {
+        var auth = game.words[game.current].length;
+        game.scores[game.current] += auth;
+        showGuessInfo();
+        el_word_of2.innerHTML = game.players[game.current];
+        el_word_of_points2.innerHTML = auth.toString() + (auth == 1 ? " Punkt" : " Punkten");
+        show(el_guess_none);
       }
 
       function isVowel(ch) { return vowels.includes(ch); }
