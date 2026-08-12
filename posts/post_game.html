@@ -184,10 +184,9 @@
           log(e);
         }
       }
-      /*function loadGame() {
+      function loadGame() {
       }
-      function saveGame(stage) {
-        game.stage = stage;
+      function saveGame() {
         localStorage.setItem('game', JSON.strigify(game));
       }
       function start() {
@@ -198,12 +197,25 @@
           game.players.push("");
         }
         
-        game.stage = 0;
         log("Start with " + game.players.length + " players!");
         game.roundStarter = -1;
-        startNextRound();
+        goToStage(0, false);
       }
-      function startNextRound() {
+      function goToStage(stage, save = true) {
+        game.stage = stage;
+        if (save) {
+          saveGame();
+        }
+        switch (stage) {
+          case 0:
+            startNextRound();
+            break;
+          default:
+            badgeError("No stage handler: " + stage);
+            break;
+        }
+      }
+      /*function startNextRound() {
         game.roundStarter = (game.roundStarter+1) % game.players.length;
         game.current = game.roundStarter;
         game.words=[];
