@@ -223,6 +223,9 @@
           case 2:
             showMakeWord();
             break;
+          case 3:
+            startRound();
+            break;
           default:
             badgeError("No stage handler: " + stage);
             break;
@@ -277,7 +280,7 @@
         }
       }
       
-      /*function setWord() {
+      function setWord() {
         var word = el_playerWord.value.trim();
         if (!isValidWord(word, letters)) {
           badgeError("Wort [" + word + "] ist nicht korrekt mit deiner Buchstaben. Versuche noch Mal.");
@@ -288,11 +291,9 @@
         game.words[game.current] = word;
         game.current = (game.current + 1) % game.players.length;
         if (game.current != game.roundStarter) {
-          saveGame(2);
-          givePlayer();
+          goToStage(1);
         } else {
-          log("Starting round!");
-          startRound();
+          goToStage(3);
         }
       }
       function getRandomInt(max) {
@@ -308,7 +309,8 @@
         }
         return letters;
       }
-      function startRound() {
+      /*function startRound() {
+        log("Starting round!");
         game.sticks = [];
         for (var i=0; i<game.players.length; i++)
           game.sticks.push(sticksPerPlayer);
