@@ -350,24 +350,52 @@
         var word = el_guess_word.value.trim();
         var pw = game.words[game.current];
         if (word.length != pw.length) {
-          badgeError("Dein Wort hat andere Zahl der Buchstaben. Sei achtsam und versuche noch mal");
+          badgeError("Dein Wort hat andere Zahl der Buchstaben. Sei achtsam und versuche noch mal.");
           return;
         }
         for (var i=0; i<game.hiddenLetters; i++) {
           if (isVowel(word[i]) != isVowel(pw[i])) {
-            badgeError("Dein Wort hat Selbstlaute und Mitlaute an den anderen Stellen. Sei achtsam und versuche noch mal");
+            badgeError("Dein Wort hat Selbstlaute und Mitlaute an den anderen Stellen. Sei achtsam und versuche noch mal.");
             return;
           }
         }
         for (var i=game.hiddenLetters; i<word.length; i++) {
           if (word[i] != pw[i]) {
-            badgeError("Dein Wort hat nicht die richtige schon bekannte Buchstaben. Sei achtsam und versuche noch mal");
+            badgeError("Dein Wort hat nicht die richtige schon bekannte Buchstaben. Sei achtsam und versuche noch mal.");
             return;
           }
         }
+        game.sticks[game.guessing]--;
+        game.allPassed = false;
+        if (word == pw) {
+          goToStage(10);
+        } else {
+          goToStage(11);
+        }
       }
       function pass() {
+        game.guessing = (game.current + 1) % game.players.length;
+        if (game.guessing != game.current) {
+          goToStage(4);
+          return;
+        }
+        
+        game.guessing = (game.current + 1) % game.players.length;
+        if (!game.allPassed) {
+          game.allPassed = true;
+          goToStage(4);
+          return;
+        }
+        
+        game.hiddenLetters--;
+        if (game.hiddenLetters > 0) {
+          goToStage(4);
+          return;
+        } else {
+          goToStage(12);
+        }
       }
+
       function isVowel(ch) { return vowels.includes(ch); }
       function isValidWord(word, letters) {
         if (!word) return false;
