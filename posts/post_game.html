@@ -170,8 +170,8 @@
         el_load_desc.innerHTML = 'Laden...';
         var gs = localStorage.getItem('game');
         log(gs);
-        /*if (gs) {
-          vat g = JSON.parse(gs);
+        if (gs) {
+          var g = JSON.parse(gs);
           var pl = "";
           for (var i=0; i<g.players.length; i++)
             pl += (!!pl ? " and " : "") + g.players[i] + " (" + g.scores[i] + ")";
@@ -179,7 +179,7 @@
         } else {
           el_load_desc.innerHTML = 'Es gibt kein gespeichertes Spiel zu laden.';
         }
-        btn_load.disabled = !g;*/
+        btn_load.disabled = !g;
         }catch(e){
           log(e);
         }
