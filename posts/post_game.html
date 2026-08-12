@@ -127,8 +127,8 @@
       var el_guess_letters = document.getElementById("guess_letters");
       
       //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZ";
-      var freque = "6224992347123492311787711111";
+      var alphas = "ABCDEEFGHIJKLMNNOPQRSTUVWXYZÄÖÜ";
+      var freque = "6224992347123492311787711111111";
       var vowels = "AEIOUY";
       var lettersPerPlayer = 8;
       var sticksPerPlayer = 5;
@@ -145,10 +145,6 @@
         letters: [],
         alphabet: "",
         roundStarter: 0,
-        // 0 - start, pre-round
-        // 1 - letters displayed 
-        // 2 - player set word, ask next player
-        // 3 - playing round
         stage: 0 
       };
 
