@@ -249,8 +249,11 @@
           case 4:
             showGuess();
             break;
+          case 10:
+            showGuessed();
+            break;
           case 11:
-            showGuessWrong();
+            showWrong();
             break:
           default:
             badgeError("No stage handler: " + stage);
