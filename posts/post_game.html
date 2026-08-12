@@ -353,7 +353,18 @@
           badgeError("Dein Wort hat andere Zahl der Buchstaben. Sei achtsam und versuche noch mal");
           return;
         }
-        
+        for (var i=0; i<game.hiddenLetters; i++) {
+          if (isVowel(word[i]) != isVowel(pw[i])) {
+            badgeError("Dein Wort hat Selbstlaute und Mitlaute an den anderen Stellen. Sei achtsam und versuche noch mal");
+            return;
+          }
+        }
+        for (var i=game.hiddenLetters; i<word.length; i++) {
+          if (word[i] != pw[i]) {
+            badgeError("Dein Wort hat nicht die richtige schon bekannte Buchstaben. Sei achtsam und versuche noch mal");
+            return;
+          }
+        }
       }
       function pass() {
       }
