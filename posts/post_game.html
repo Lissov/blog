@@ -194,6 +194,7 @@
         hide(el_numplayers);
         var numPlayers = +(inp_numplayers.value);
         game.players = [];
+        game.scores = [];
         for (var i=0; i<numPlayers; i++) {
           game.players.push("");
           game.scores.push(0);
